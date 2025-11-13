@@ -1,0 +1,30 @@
+:root {
+  /* Farben */
+  --primary: #EB9125;
+  --secondary: #CB6F00;
+  --accent: #5ACFEF;
+  --text: #FFFFFF;
+  --text-inv: #2B2C33;
+  --text-grey: #a7a7a7;
+  --bg: #23252A;
+  --bg-light: #2E303B;
+
+  /* Fonts */
+  --open: 'open-sans', sans-serif;
+  --spills: 'cc-spills-base', sans-serif;
+  --spills-in: 'cc-spills-infield', sans-serif;
+  --gothic-wide: 'field-gothic-wide', sans-serif;
+  --gothic-xwide: 'field-gothic-xwide', sans-serif;
+
+
+  /* Font Weights */
+  --weight-thin: 100;
+  --weight-extralight: 200;
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+}

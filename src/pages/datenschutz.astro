@@ -1,0 +1,103 @@
+---
+import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Impressum">
+  <div class="impressum">
+    <h1>Datenschutz</h1>
+
+    <p>
+      1. Verantwortlicher <br />YVAL Design GbR Andreasstraße 2A 31134
+      Hildesheim Deutschland <br />Vertretungsberechtigt: Jan Pascal Hellmann
+      und Yves-Alexander Kronen <br />Telefon: +49 177 1754814 <br />E-Mail:
+      info@yval-design.de <br />2. Allgemeine Hinweise zur Datenverarbeitung<br
+      /> Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Personenbezogene
+      Daten werden vertraulich und gemäß den gesetzlichen Datenschutzvorschriften
+      sowie dieser Datenschutzerklärung behandelt. Wir verarbeiten personenbezogene
+      Daten unserer Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer
+      funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich
+      ist. <br />3. Hosting über Cloudflare <br />Unsere Website wird über den
+      Anbieter Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA,
+      bereitgestellt. Cloudflare bietet ein Content Delivery Network (CDN) sowie
+      Sicherheitsdienste (z. B. DDoS-Schutz) an. Die Verbindung zu den Servern
+      von Cloudflare wird verschlüsselt hergestellt. Cloudflare verarbeitet
+      dabei technische Daten (z. B. IP-Adresse, Zugriffszeit,
+      Browserinformationen), um die Auslieferung der Website zu ermöglichen und
+      Sicherheitsfunktionen bereitzustellen. Wir haben mit Cloudflare einen
+      Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO abgeschlossen.
+      Weitere Informationen finden Sie in der Datenschutzerklärung von
+      Cloudflare: https://www.cloudflare.com/privacypolicy/ <br />4. Erfassung
+      von Zugriffsdaten (Server-Logfiles)<br /> Bei jedem Zugriff auf unsere Website
+      erfasst unser System automatisch Informationen, die Ihr Browser an uns übermittelt.
+      Dazu gehören: IP-Adresse Datum und Uhrzeit der Anfrage Zeitzonendifferenz zur
+      Greenwich Mean Time (GMT) Inhalt der Anforderung (konkrete Seite) Zugriffsstatus
+      / HTTP-Statuscode übertragene Datenmenge Browsertyp, Sprache und Version Betriebssystem
+      und dessen Oberfläche Die Verarbeitung dieser Daten dient der Sicherstellung
+      der Funktionsfähigkeit und Sicherheit der Website (berechtigtes Interesse gemäß
+      Art. 6 Abs. 1 lit. f DSGVO). Eine Zusammenführung dieser Daten mit anderen
+      Datenquellen erfolgt nicht. <br />5. Kontaktformular <br />Wenn Sie uns
+      über das Kontaktformular kontaktieren, werden Ihre Angaben aus dem
+      Formular einschließlich der von Ihnen angegebenen Kontaktdaten zur
+      Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen
+      gespeichert. Rechtsgrundlage für die Verarbeitung der Daten ist Art.6 Abs.
+      1 lit. b DSGVO (Vertragserfüllung oder vorvertragliche Maßnahmen). Eine
+      Weitergabe an Dritte erfolgt nicht. Die von Ihnen im Kontaktformular
+      eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern
+      oder der Zweck für die Datenspeicherung entfällt (z. B. nach
+      abgeschlossener Bearbeitung Ihrer Anfrage). <br />6. SSL- bzw.
+      TLS-Verschlüsselung <br />Diese Seite nutzt aus Sicherheitsgründen und zum
+      Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw.
+      TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran,
+      dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt
+      und an dem Schloss-Symbol in Ihrer Browserzeile.<br /> 7. Rechte der betroffenen
+      Person <br />Sie haben jederzeit das Recht auf: Auskunft über Ihre bei uns
+      gespeicherten Daten (Art. 15 DSGVO), Berichtigung unrichtiger Daten (Art.
+      16 DSGVO), Löschung Ihrer Daten (Art. 17 DSGVO), Einschränkung der
+      Verarbeitung (Art. 18 DSGVO), Widerspruch gegen die Verarbeitung (Art. 21
+      DSGVO), Datenübertragbarkeit (Art. 20 DSGVO). Zur Ausübung dieser Rechte
+      genügt eine formlose Mitteilung an: info@yval-design.de Zudem steht Ihnen
+      ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde zu. <br />8.
+      Aktualität und Änderung dieser Datenschutzerklärung <br />Diese
+      Datenschutzerklärung ist aktuell gültig (Stand: November 2025). Durch die
+      Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher
+      bzw. behördlicher Vorgaben kann es notwendig werden, diese
+      Datenschutzerklärung anzupassen. Die jeweils aktuelle Version finden Sie
+      stets auf unserer Website.
+    </p>
+
+    <style>
+      .impressum {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-bottom: 51%;
+      }
+      h1 {
+        font-family: var(--gothic-wide);
+        color: white;
+        font-size: 9vw;
+        text-align: center;
+        margin-top: 10%;
+      }
+
+      p {
+        font-family: var(--gothic-wide);
+        color: var(--text);
+        font-size: 4vw;
+        text-align: center;
+        margin-bottom: 4rem;
+        line-height: 1.2;
+      }
+
+      @media (min-width: 701px) {
+        h1 {
+          font-size: 4rem;
+        }
+
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </div>
+</Layout>

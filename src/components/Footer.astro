@@ -1,0 +1,84 @@
+---
+import Tiktok from "../assets/tiktok.svg";
+---
+
+<footer>
+  <ul class="links">
+    <li><a href="/impressum">IMPRESSUM</a></li>
+    <li><a href="/datenschutz">DATENSCHUTZ</a></li>
+    <li><a href="">KONTAKT</a></li>
+  </ul>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/yvaldesign/"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-instagram-icon lucide-instagram"
+        ><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path
+          d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+          x1="17.5"
+          x2="17.51"
+          y1="6.5"
+          y2="6.5"></line></svg
+      ></a
+    >
+
+    <a href="https://www.tiktok.com/@yvaldesign?lang=de-DE"
+      ><Tiktok class="tiktok" width="30" height="30" /></a
+    >
+  </div>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    padding: 60px 20px 30px 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 400px) {
+    footer {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  .links {
+    list-style: none;
+    display: flex;
+    font-family: var(--open);
+    font-weight: 400;
+    font-size: 0.8rem;
+    gap: 24px;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .socials {
+    display: flex;
+    gap: 1.5rem;
+    color: white;
+  }
+
+  .tiktok {
+    fill: white;
+  }
+</style>

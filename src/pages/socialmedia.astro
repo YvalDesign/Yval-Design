@@ -1,0 +1,691 @@
+---
+import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+import social from "../assets/social.png";
+import DBP from "../assets/dpb.jpg";
+import Mivida from "../assets/mivida.jpg";
+import Neo from "../assets/neo.jpg";
+import Editmiv from "../assets/edit-miv.mp4";
+import Editvolk from "../assets/edit-volk.mp4";
+import Mcs from "../assets/Mcs.mp4";
+import Switch from "../assets/Switch.mp4";
+import web3 from "../assets/dna.png";
+import web4 from "../assets/crowd.png";
+import web5 from "../assets/gear.png";
+import web6 from "../assets/earth.png";
+import Workflow from "../components/sm-workflow.astro";
+---
+
+<Layout title="Social Media">
+  <div class="webhero">
+    <h1 class="webheadline">
+      LETS GO! <br />
+      <span class="h1-span"> Machen wir geilen Content für dich!</span>
+    </h1>
+
+    <Image src={social} alt="Hero Bild" class="heroimg" format="avif" />
+  </div>
+
+  <div class="section-deinewebseite">
+    <h2>
+      Warum es <span class="h2-span-1">bei dir</span>, <br />
+      <span class="h2-span-2">nicht </span> klappt
+    </h2>
+
+    <p class="webtext">
+      "Ich will das Logo ganz groß im Post haben, am besten direkt oben drauf!
+      Und irgendwo muss noch ein QR-Code hin! Wir wollen doch einfach nur unsere
+      Produkte verkaufen!"
+    </p>
+    <p class="webtext">
+      Sowas hören wir ziemlich oft. Aber genau so funktioniert Social Media eben
+      nicht. Die Nutzer scrollen nicht durch Instagram oder TikTok, um Werbung
+      zu sehen, sondern wollen unterhalten werden, etwas lernen oder einfach nur
+      abschalten. <br /> Wenn du ihnen stattdessen nur dein Produkt zeigst, swipen
+      sie direkt weiter.
+    </p>
+    <p class="zwischen">Deswegen</p>
+    <p class="webtext">
+      Erst wenn du echten Mehrwert lieferst, sei es durch Humor, Inspiration
+      oder interessante Infos, entsteht Aufmerksamkeit. Dann folgen dir die
+      Leute automatisch. Und weil sie dich kennen und deinen Content positiv mit
+      dir verknüpfen, ist der Schritt zum Kunden nicht mehr weit!
+    </p>
+    <p class="webtext">
+      Social Media kostet Zeit, Nerven und läuft oft ins Leere. Genau deshalb
+      übernehmen wir das für euch, von Content bis Kampagne, komplett aus einer
+      Hand.
+    </p>
+  </div>
+
+  <div class="websites">
+    <h3>UNSERE FEEDS</h3>
+    <div class="ex">
+      <Image
+        src={DBP}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+      <Image
+        src={Mivida}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+      <Image
+        src={Neo}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+    </div>
+    <h3>UNSERE VIDEOS</h3>
+    <div class="ex">
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Editvolk} type="video/mp4" />
+        <source src={Editvolk} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Editmiv} type="video/mp4" />
+        <source src={Editmiv} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Mcs} type="video/mp4" />
+        <source src={Mcs} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Switch} type="video/mp4" />
+        <source src={Switch} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <div class="spacer"></div>
+    </div>
+  </div>
+
+  <button>LASS UNS HELFEN!</button>
+
+  <div class="benefits">
+    <h3>DEINE BENEFITS</h3>
+
+    <grid class="grid-benefits">
+      <section class="benefit-card">
+        <Image
+          src={web3}
+          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          class="card-bg"
+          loading="lazy"
+          quality="{80}"
+          decoding="async"
+          aria-placeholder="blur"
+          format="avif"
+          widths={[800, 1600, 3000]}
+        />
+
+        <div class="card-content">
+          <div class="card-icon">
+            <svg
+              width="209"
+              height="183"
+              viewBox="0 0 209 183"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon-monitor"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.85043 0.712326C6.40659 1.17513 5.12712 2.06641 3.5657 3.69634C-0.294229 7.72561 0.00541187 1.51695 0.00541187 77.418C0.00541187 153.239 -0.2858 147.129 3.51723 151.076C7.3485 155.051 5.06685 154.845 45.2001 154.845H80.1835L79.9526 156.055C79.8257 156.72 79.3857 159.096 78.9752 161.334L78.2289 165.403H70.4951C62.8456 165.403 62.7496 165.415 61.7267 166.483C60.7195 167.534 60.6921 167.739 60.6921 174.201C60.6921 180.664 60.7195 180.869 61.7267 181.92L62.7609 183H104.521H146.282L147.316 181.92C148.323 180.869 148.351 180.664 148.351 174.201C148.351 167.739 148.323 167.534 147.316 166.483C146.293 165.415 146.197 165.403 138.548 165.403H130.814L130.068 161.334C129.657 159.096 129.218 156.724 129.092 156.064L128.863 154.864L164.63 154.745L200.398 154.625L202.505 153.456C204.999 152.073 206.475 150.508 207.832 147.806L208.827 145.826L208.938 78.2979C209.064 1.30402 209.369 7.7828 205.431 3.65718C201.596 -0.36241 211.315 -0.0126703 104.339 0.0220837C21.6567 0.0489191 9.65291 0.134705 7.85043 0.712326ZM200.706 8.68816L202.084 10.1263L202.194 68.4079L202.304 126.69H104.521H6.73911L6.8491 68.4348L6.9591 10.1804L8.01268 8.99699C8.59216 8.34634 9.44557 7.64906 9.90914 7.44845C10.3727 7.24741 53.1817 7.12027 105.04 7.16646L199.328 7.25005L200.706 8.68816ZM202.224 139.22L202.084 144.712L200.706 146.149L199.328 147.586H104.521H9.71444L8.33677 146.149L6.9591 144.712L6.81918 139.22L6.67968 133.728H104.521H202.363L202.224 139.22ZM98.8131 138.328C98.1607 139.008 97.7784 139.91 97.7784 140.767C97.7784 141.624 98.1607 142.526 98.8131 143.207C99.787 144.223 100.121 144.287 104.521 144.287C108.922 144.287 109.256 144.223 110.23 143.207C110.882 142.526 111.264 141.624 111.264 140.767C111.264 139.91 110.882 139.008 110.23 138.328C109.256 137.311 108.922 137.248 104.521 137.248C100.121 137.248 99.787 137.311 98.8131 138.328ZM122.805 158.914C123.215 161.152 123.655 163.528 123.782 164.193L124.013 165.403H104.521H85.03L85.261 164.193C85.3878 163.528 85.8278 161.152 86.2383 158.914L86.9846 154.845H104.521H122.058L122.805 158.914ZM141.608 174.201V175.961H104.521H67.4351V174.201V172.442H104.521H141.608V174.201Z"
+                fill="#EB9125"></path>
+            </svg>
+          </div>
+
+          <h4 class="card-headline">Markenidentität und Vertrauen</h4>
+
+          <p class="card-sub">
+            Ein guter Imagefilm ist mehr als nur hübsche Bilder,<br />
+            Er erzählt, was dich ausmacht: deine Vision, deine Werte, echt und emotional.
+            So entsteht Vertrauen und dein Unternehmen wirkt direkt nahbarer und
+            menschlicher.
+          </p>
+        </div>
+      </section>
+
+      <section class="benefit-card">
+        <Image
+          src={web4}
+          alt="Viele Menschen, die die Hände heben"
+          class="card-bg"
+          loading="lazy"
+          quality="{80}"
+          decoding="async"
+          aria-placeholder="blur"
+          format="avif"
+          widths={[800, 1600, 3000]}
+        />
+
+        <div class="card-content">
+          <div class="card-icon">
+            <svg
+              width="209"
+              height="135"
+              viewBox="0 0 209 135"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M96.754 0.0769242C72.6747 2.97366 50.3178 14.2852 26.5927 35.5763C18.313 43.0067 4.6564 58.0175 1.10962 63.5871C-0.369874 65.9098 -0.369874 69.1563 1.10962 71.479C3.01574 74.4725 10.9503 83.8157 16.5713 89.6864C36.7447 110.756 59.2214 125.547 80.3981 131.689C89.6117 134.362 94.2658 135 104.526 135C114.786 135 119.44 134.362 128.653 131.689C153.482 124.488 180.759 104.819 202.533 78.4168C208.492 71.1899 209 70.3355 209 67.5331C209 64.7306 208.492 63.8762 202.533 56.6493C180.906 30.4246 153.7 10.7364 129.068 3.48373C120.802 1.04971 115.34 0.225625 106.366 0.0578185C101.867 -0.0260848 97.5414 -0.0177785 96.754 0.0769242ZM114.547 14.5818C133.824 17.5305 154.81 29.0476 174.974 47.7448C181.121 53.444 193.287 66.6097 193.287 67.5621C193.287 67.7196 191.877 69.4861 190.153 71.4882C166.35 99.1364 139.234 116.709 114.547 120.484C109.304 121.286 99.7469 121.286 94.5043 120.484C76.7299 117.765 57.7198 107.921 38.875 91.6773C32.0579 85.8011 15.7643 68.7787 15.7643 67.5331C15.7643 67.3599 17.1746 65.58 18.8983 63.578C42.5444 36.1125 69.6478 18.4737 94.1488 14.6046C99.1145 13.8204 109.493 13.8088 114.547 14.5818ZM98.7992 25.8311C81.0866 29.1236 68.4931 40.8244 64.1973 57.9797C63.0925 62.393 63.0925 72.6732 64.1973 77.0864C68.1474 92.861 79.5833 104.474 95.1178 108.485C99.4639 109.607 109.588 109.607 113.934 108.485C129.468 104.474 140.904 92.861 144.854 77.0864C145.456 74.6827 145.634 72.5008 145.634 67.5331C145.634 62.5653 145.456 60.3834 144.854 57.9797C140.956 42.4115 129.879 30.9928 114.547 26.7361C111.754 25.9611 101.325 25.3617 98.7992 25.8311ZM111.059 40.3816C118.733 42.1183 125.699 47.8195 129.276 55.2915C131.395 59.7176 132.043 63.1335 131.834 68.7792C131.636 74.1224 130.627 77.7684 128.177 81.9881C126.433 84.9903 121.717 89.7795 118.761 91.5498C110.145 96.7086 98.9063 96.7086 90.2907 91.5498C87.3342 89.7795 82.618 84.9903 80.8747 81.9881C75.7944 73.2393 75.7944 61.8268 80.8747 53.078C82.618 50.0758 87.3342 45.2867 90.2907 43.5164C96.4766 39.8126 103.715 38.7202 111.059 40.3816Z"
+                fill="#EB9125"
+                class="icon-monitor-eye"></path>
+            </svg>
+          </div>
+
+          <h4 class="card-headline">
+            Mehr Sichtbarkeit <br />
+            und Reichweite
+          </h4>
+
+          <p class="card-sub">
+            Ob auf deiner Website, auf Youtube oder im Kino...<br />
+            auf Messen oder in Ads, ein starker Film funktioniert auf allen Kanälen.
+            Damit erreichst du nicht nur mehr Menschen, sondern hinterlässt auch
+            Eindruck, wo es darauf ankommt.
+          </p>
+        </div>
+      </section>
+
+      <section class="benefit-card">
+        <Image
+          src={web5}
+          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          class="card-bg"
+          loading="lazy"
+          quality="{80}"
+          decoding="async"
+          aria-placeholder="blur"
+          format="avif"
+          widths={[800, 1600, 3000]}
+        />
+
+        <div class="card-content">
+          <div class="card-icon">
+            <svg
+              width="209"
+              height="209"
+              viewBox="0 0 209 209"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M97.7617 0.663689C96.3798 1.02521 93.5182 2.16865 91.4022 3.20482C87.9609 4.89054 86.7329 5.89476 79.753 12.7298C75.356 17.0357 71.0536 20.838 69.8951 21.4424C67.9613 22.4502 67.2016 22.5301 57.1038 22.7839C46.6881 23.0459 46.2523 23.0943 42.4651 24.4226C33.4775 27.5745 26.916 34.4415 23.9813 43.7671C23.3792 45.681 23.1138 48.8274 22.8648 57.0045C22.598 65.7677 22.3911 68.0614 21.7328 69.533C21.2472 70.6181 17.7748 74.5537 13.0028 79.4269C5.57014 87.0174 4.95204 87.7829 3.03473 91.7756C0.643218 96.7556 0 99.4802 0 104.631C0 109.339 0.857929 112.77 3.26314 117.678C4.9493 121.118 5.94885 122.339 12.7935 129.318C17.1028 133.711 20.9082 138.01 21.5131 139.168C22.519 141.095 22.604 141.887 22.8813 151.949C23.2011 163.566 23.4445 164.94 26.1992 170.664C28.1705 174.76 34.2746 180.859 38.3738 182.829C44.033 185.548 45.493 185.807 57.1038 186.16C65.8741 186.427 68.1696 186.634 69.6425 187.291C70.7283 187.777 74.6671 191.246 79.5443 196.014C87.1409 203.441 87.907 204.059 91.9029 205.974C96.8897 208.365 99.6233 209.009 104.751 209C109.693 208.991 113.52 208.04 118.039 205.697C121.192 204.063 122.906 202.641 129.511 196.18C133.891 191.896 138.174 188.117 139.333 187.514C141.263 186.51 142.049 186.428 152.125 186.165C162.505 185.894 162.989 185.839 166.763 184.523C175.737 181.393 182.311 174.516 185.247 165.186C185.849 163.272 186.115 160.126 186.364 151.949C186.63 143.186 186.837 140.892 187.496 139.42C187.979 138.339 191.435 134.416 196.14 129.606C202.402 123.207 204.312 120.951 205.634 118.399C208.518 112.83 209 110.837 209 104.477C209 98.1168 208.518 96.1234 205.634 90.5545C204.312 88.0025 202.402 85.7466 196.14 79.347C191.435 74.5373 187.979 70.6144 187.496 69.533C186.835 68.0541 186.636 65.8092 186.389 57.0045C186.099 46.661 186.039 46.1379 184.725 42.3776C181.593 33.4108 174.71 26.8423 165.373 23.9086C163.457 23.307 160.308 23.0418 152.125 22.793C143.354 22.5265 141.059 22.3197 139.586 21.6619C138.503 21.1781 134.581 17.7281 129.764 13.0202C120.986 4.44184 117.687 2.22114 111.437 0.68423C107.763 -0.219567 101.177 -0.229609 97.7617 0.663689ZM109.42 15.3116C111.255 15.9365 113.062 17.441 119.701 23.8703C132.363 36.1327 134.14 36.9155 150.297 37.351C159.851 37.6085 161.265 37.7459 163.144 38.5981C166.16 39.9661 168.802 42.5328 170.269 45.5194C171.517 48.0596 171.544 48.2856 171.811 58.8303C172.221 74.965 173.003 76.7401 185.285 89.402C193.862 98.2437 194.61 99.4524 194.61 104.477C194.61 109.488 193.866 110.692 185.289 119.554C173.001 132.251 172.232 133.994 171.789 150.123C171.454 162.366 171.074 163.898 167.516 167.378C163.86 170.954 162.491 171.291 150.297 171.613C134.172 172.039 132.961 172.564 120.77 184.415C111.524 193.404 109.913 194.4 104.614 194.4C99.3154 194.4 97.7042 193.404 88.4579 184.415C76.2674 172.564 75.0564 172.039 58.9311 171.613C46.7379 171.291 45.3688 170.954 41.7123 167.378C38.1339 163.878 37.758 162.363 37.4286 150.123C36.9955 134.008 36.4697 132.798 24.6113 120.62C15.6419 111.408 14.6186 109.762 14.6186 104.541C14.6186 99.446 15.3468 98.2638 23.9429 89.402C36.2221 76.7433 37.0088 74.9608 37.4341 58.8303C37.757 46.5898 38.1321 45.0776 41.7123 41.5756C45.371 37.9974 46.737 37.6619 58.9311 37.346C68.1756 37.1063 70.0792 36.9324 72.6361 36.093C78.1066 34.2973 81.0376 32.166 89.1838 24.0597C95.5333 17.7418 97.2414 16.2921 99.2387 15.5248C102.219 14.3804 106.425 14.2923 109.42 15.3116ZM130.425 78.7098C129.671 79.0959 121.344 87.1064 111.92 96.5105L94.7846 113.609L87.4794 106.275C83.4611 102.24 79.7676 98.7157 79.2711 98.4418C76.3419 96.8254 72.8745 97.3002 70.5346 99.6382C68.1957 101.975 67.7206 105.431 69.3341 108.368C69.6068 108.864 74.6242 114.026 80.484 119.84C89.1139 128.404 91.4881 130.514 92.9833 130.953C96.9308 132.112 96.4954 132.465 119.376 109.59C141.924 87.0484 141.559 87.494 140.686 83.6286C139.66 79.0841 134.511 76.6155 130.425 78.7098Z"
+                fill="#EB9125"
+                class="icon-monitor"></path>
+            </svg>
+          </div>
+
+          <h4 class="card-headline">Gamechanger</h4>
+
+          <p class="card-sub">
+            Was dich von der Konkurrenz abhebt?<br />
+            Ein Film, der nicht nur informiert, sondern berührt. Genau das macht
+            den Unterschied und bringt dir eechte Vorteile im Wettbewerb.
+          </p>
+        </div>
+      </section>
+      <section class="benefit-card">
+        <Image
+          src={web6}
+          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          class="card-bg"
+          loading="lazy"
+          quality="{80}"
+          decoding="async"
+          aria-placeholder="blur"
+          format="avif"
+          widths={[800, 1600, 3000]}
+        />
+
+        <div class="card-content">
+          <div class="card-icon">
+            <svg
+              width="209"
+              height="209"
+              viewBox="0 0 209 209"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M97.7617 0.663689C96.3798 1.02521 93.5182 2.16865 91.4022 3.20482C87.9609 4.89054 86.7329 5.89476 79.753 12.7298C75.356 17.0357 71.0536 20.838 69.8951 21.4424C67.9613 22.4502 67.2016 22.5301 57.1038 22.7839C46.6881 23.0459 46.2523 23.0943 42.4651 24.4226C33.4775 27.5745 26.916 34.4415 23.9813 43.7671C23.3792 45.681 23.1138 48.8274 22.8648 57.0045C22.598 65.7677 22.3911 68.0614 21.7328 69.533C21.2472 70.6181 17.7748 74.5537 13.0028 79.4269C5.57014 87.0174 4.95204 87.7829 3.03473 91.7756C0.643218 96.7556 0 99.4802 0 104.631C0 109.339 0.857929 112.77 3.26314 117.678C4.9493 121.118 5.94885 122.339 12.7935 129.318C17.1028 133.711 20.9082 138.01 21.5131 139.168C22.519 141.095 22.604 141.887 22.8813 151.949C23.2011 163.566 23.4445 164.94 26.1992 170.664C28.1705 174.76 34.2746 180.859 38.3738 182.829C44.033 185.548 45.493 185.807 57.1038 186.16C65.8741 186.427 68.1696 186.634 69.6425 187.291C70.7283 187.777 74.6671 191.246 79.5443 196.014C87.1409 203.441 87.907 204.059 91.9029 205.974C96.8897 208.365 99.6233 209.009 104.751 209C109.693 208.991 113.52 208.04 118.039 205.697C121.192 204.063 122.906 202.641 129.511 196.18C133.891 191.896 138.174 188.117 139.333 187.514C141.263 186.51 142.049 186.428 152.125 186.165C162.505 185.894 162.989 185.839 166.763 184.523C175.737 181.393 182.311 174.516 185.247 165.186C185.849 163.272 186.115 160.126 186.364 151.949C186.63 143.186 186.837 140.892 187.496 139.42C187.979 138.339 191.435 134.416 196.14 129.606C202.402 123.207 204.312 120.951 205.634 118.399C208.518 112.83 209 110.837 209 104.477C209 98.1168 208.518 96.1234 205.634 90.5545C204.312 88.0025 202.402 85.7466 196.14 79.347C191.435 74.5373 187.979 70.6144 187.496 69.533C186.835 68.0541 186.636 65.8092 186.389 57.0045C186.099 46.661 186.039 46.1379 184.725 42.3776C181.593 33.4108 174.71 26.8423 165.373 23.9086C163.457 23.307 160.308 23.0418 152.125 22.793C143.354 22.5265 141.059 22.3197 139.586 21.6619C138.503 21.1781 134.581 17.7281 129.764 13.0202C120.986 4.44184 117.687 2.22114 111.437 0.68423C107.763 -0.219567 101.177 -0.229609 97.7617 0.663689ZM109.42 15.3116C111.255 15.9365 113.062 17.441 119.701 23.8703C132.363 36.1327 134.14 36.9155 150.297 37.351C159.851 37.6085 161.265 37.7459 163.144 38.5981C166.16 39.9661 168.802 42.5328 170.269 45.5194C171.517 48.0596 171.544 48.2856 171.811 58.8303C172.221 74.965 173.003 76.7401 185.285 89.402C193.862 98.2437 194.61 99.4524 194.61 104.477C194.61 109.488 193.866 110.692 185.289 119.554C173.001 132.251 172.232 133.994 171.789 150.123C171.454 162.366 171.074 163.898 167.516 167.378C163.86 170.954 162.491 171.291 150.297 171.613C134.172 172.039 132.961 172.564 120.77 184.415C111.524 193.404 109.913 194.4 104.614 194.4C99.3154 194.4 97.7042 193.404 88.4579 184.415C76.2674 172.564 75.0564 172.039 58.9311 171.613C46.7379 171.291 45.3688 170.954 41.7123 167.378C38.1339 163.878 37.758 162.363 37.4286 150.123C36.9955 134.008 36.4697 132.798 24.6113 120.62C15.6419 111.408 14.6186 109.762 14.6186 104.541C14.6186 99.446 15.3468 98.2638 23.9429 89.402C36.2221 76.7433 37.0088 74.9608 37.4341 58.8303C37.757 46.5898 38.1321 45.0776 41.7123 41.5756C45.371 37.9974 46.737 37.6619 58.9311 37.346C68.1756 37.1063 70.0792 36.9324 72.6361 36.093C78.1066 34.2973 81.0376 32.166 89.1838 24.0597C95.5333 17.7418 97.2414 16.2921 99.2387 15.5248C102.219 14.3804 106.425 14.2923 109.42 15.3116ZM130.425 78.7098C129.671 79.0959 121.344 87.1064 111.92 96.5105L94.7846 113.609L87.4794 106.275C83.4611 102.24 79.7676 98.7157 79.2711 98.4418C76.3419 96.8254 72.8745 97.3002 70.5346 99.6382C68.1957 101.975 67.7206 105.431 69.3341 108.368C69.6068 108.864 74.6242 114.026 80.484 119.84C89.1139 128.404 91.4881 130.514 92.9833 130.953C96.9308 132.112 96.4954 132.465 119.376 109.59C141.924 87.0484 141.559 87.494 140.686 83.6286C139.66 79.0841 134.511 76.6155 130.425 78.7098Z"
+                fill="#EB9125"
+                class="icon-monitor"></path>
+            </svg>
+          </div>
+
+          <h4 class="card-headline">Effiziente Kommunikation</h4>
+
+          <p class="card-sub">
+            Das Produkt ist erklärungsbedürftig?<br />
+            Perfekt! Wir machens visuell verständlich. Ein Film bringt deine Botschaft
+            auf den Punkt, klar und direkt!
+          </p>
+        </div>
+      </section>
+    </grid>
+  </div>
+
+  <Workflow />
+
+  <style>
+    h1 {
+      color: var(--primary);
+      font-size: 6vw;
+      font-weight: var(--weight-bold);
+      font-family: var(--gothic-wide);
+
+      text-align: center;
+      line-height: 0.5;
+    }
+
+    .h1-span {
+      color: white;
+      font-size: 5vw;
+      font-family: var(--spills);
+      font-weight: var(--weight-normal);
+    }
+
+    @media (max-width: 1025px) {
+      h1 {
+        font-size: 12vw;
+        line-height: 0.3;
+
+        .h1-span {
+          font-size: 7vw;
+        }
+      }
+    }
+
+    .heroimg {
+      display: block;
+      width: 130%;
+      height: auto;
+      margin-top: -10%;
+    }
+
+    @media (max-width: 1025px) {
+      .heroimg {
+        width: 150%;
+      }
+    }
+
+    .webhero {
+      margin-top: 10%;
+      position: relative;
+
+      display: flex;
+      flex-direction: column; /* Headline oben, Bild unten */
+      align-items: center; /* Abstand proportional zur View Width */
+      overflow-x: hidden;
+    }
+
+    .webheadline {
+      position: absolute;
+    }
+
+    h2 {
+      color: white;
+      font-size: 6vw;
+      font-weight: var(--weight-bold);
+      font-family: var(--gothic-wide);
+      line-height: 1;
+
+      margin-block-start: -0.5em;
+      margin-block-end: 1.5em;
+      text-align: center;
+    }
+
+    .h2-span-1 {
+      color: var(--primary);
+    }
+
+    .h2-span-2 {
+      position: relative;
+      top: 0.12em;
+
+      font-size: 8vw;
+      font-family: var(--spills);
+      font-weight: var(--weight-normal);
+      color: var(--primary);
+    }
+
+    .zwischen {
+      font-size: 11vw;
+      font-family: var(--spills);
+      font-weight: var(--weight-normal);
+      color: var(--primary);
+      text-align: center;
+      margin-block: 1rem;
+    }
+
+    @media (max-width: 1025px) {
+      h2 {
+        font-size: 7.5vw;
+        line-height: 0.8;
+      }
+    }
+
+    @media (max-width: 1025px) {
+      .h2-span-2 {
+        font-size: 11vw;
+      }
+    }
+
+    .webtext {
+      position: static;
+      inset-block-end: 0;
+      font-size: 30px;
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-semibold);
+      line-height: 160%;
+      color: white;
+
+      text-align: center;
+      margin-inline: auto;
+
+      max-width: 50ch;
+    }
+
+    @media (max-width: 1025px) {
+      .webtext {
+        font-size: 18px;
+      }
+    }
+
+    .websites {
+      max-width: 1200px;
+      margin-block-start: 80px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Bild mittig */
+      justify-content: center;
+      padding-inline: 1rem;
+    }
+
+    .ex {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+    }
+
+    h3 {
+      color: white;
+      font-family: var(--gothic-xwide);
+      font-weight: 600;
+      font-size: 4vw;
+      align-self: flex-start;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 701px) {
+      h3 {
+        font-size: 2rem;
+      }
+    }
+
+    .marseille {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+
+      border-radius: 20px;
+      width: 90%;
+      height: auto;
+    }
+
+    .video-container {
+      position: relative;
+
+      max-width: 55%;
+      margin: 2rem auto;
+      cursor: pointer;
+    }
+
+    .videoex {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      max-width: 65%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    @media (min-width: 701px) {
+      .videoex {
+        width: auto;
+        height: 80vh;
+      }
+    }
+
+    .spacer {
+      flex: 0 0 auto;
+      scroll-snap-align: center;
+      max-width: 65%;
+      height: auto;
+    }
+
+    button {
+      background: linear-gradient(
+        to right,
+        var(--primary),
+        var(--secondary),
+        var(--primary)
+      );
+      border: none;
+      border-radius: 50px;
+      color: white;
+
+      font-family: var(--gothic-wide);
+      font-weight: 800;
+      display: block;
+      margin-inline: auto;
+
+      transform: scale(1);
+      transition: transform 150ms ease-in-out;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      button {
+        font-size: 4vw;
+        padding: 20px 40px;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (min-width: 701px) {
+      button {
+        font-size: 3vw;
+        padding: 25px 35px;
+        margin-top: 4rem;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      button {
+        font-size: 2vw;
+        padding: 30px 45px;
+      }
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      transition: all 150ms ease-in-out;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .card-icon {
+      height: 6vw;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .card-icon svg {
+      width: auto; /* Breite vom Icon ergibt sich aus Höhe */
+      height: 100%; /* füllt die Icon-Zone */
+    }
+
+    .card-headline {
+      margin-block-end: 0;
+      margin-block-start: 0.5rem;
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-bold);
+
+      color: var(--text);
+      line-height: 130%;
+      font-size: 2vw;
+    }
+
+    .card-sub {
+      padding-inline-start: 0;
+      padding-block-start: 0;
+      margin-block-start: 0.5rem;
+      font-family: var(--open);
+      color: var(--text);
+      font-size: 1vw;
+      max-width: 60ch;
+      line-height: 160%;
+    }
+
+    .benefit-card {
+      position: relative;
+      min-height: auto;
+    } /* Höhe der Kachel */
+
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      padding-inline-start: 2vw;
+      padding-block-start: 1vw;
+      padding-block-end: 1.5vw;
+      overflow: hidden;
+    } /* liegt über dem Bild */
+
+    .benefit-card {
+      position: relative;
+      min-height: auto;
+
+      /*overflow: hidden;
+      border-radius: 20px; */
+    }
+
+    .grid-benefits {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 1025px) {
+      .grid-benefits {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card-content {
+        padding: 1.25rem 1.25rem 1.75rem; /* mehr Luft innen */
+      }
+
+      /* Headline auf Handy größer, nicht mehr in vw */
+      .card-headline {
+        font-size: 1.4rem;
+        line-height: 1.3;
+      }
+
+      /* Fließtext größer */
+      .card-sub {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      /* Icon-Zone auf Handy fix in px/rem, nicht vw */
+      .card-icon {
+        height: 3rem;
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .card-icon svg {
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    .benefits {
+      max-width: 1440px; /* Gesamtbreite des Bereichs */
+      margin-inline: auto; /* zentriert im Viewport */
+      padding-inline: 1.5rem;
+
+      margin-block-start: 20%;
+    }
+  </style>
+
+  <script>
+    const videos = document.querySelectorAll("video");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.intersectionRatio === 1) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      },
+      {
+        root: document.querySelector(".scroll-wrapper"),
+        threshold: 1.0,
+      },
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  </script>
+</Layout>

@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Impressum">
+  <div class="impressum">
+    <h1>Impressum</h1>
+
+    <h2>Angaben gemäß § 5 TMG:</h2>
+    <p>
+      YVAL Design<br />
+      Andreasstraße 2A<br />
+      31134 Hildesheim<br />
+    </p>
+
+    <h2>Kontakt:</h2>
+    <p>
+      Telefon: +49 177 1754814<br />
+      E-Mail: info@yval-design.de
+    </p>
+  </div>
+
+  <style>
+    .impressum {
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 51%;
+    }
+    h1 {
+      font-family: var(--gothic-wide);
+      color: white;
+      font-size: 9vw;
+      text-align: center;
+      margin-top: 10%;
+    }
+
+    h2 {
+      font-family: var(--gothic-wide);
+      color: white;
+      text-align: center;
+      font-size: 5vw;
+      margin-top: 5%;
+    }
+
+    p {
+      font-family: var(--gothic-wide);
+      color: var(--text);
+      font-size: 4vw;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    @media (min-width: 701px) {
+      h1 {
+        font-size: 4rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</Layout>

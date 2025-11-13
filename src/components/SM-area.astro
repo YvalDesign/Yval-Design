@@ -1,0 +1,371 @@
+---
+import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+import social from "../assets/social.png";
+import DBP from "../assets/dpb.jpg";
+import Mivida from "../assets/mivida.jpg";
+import Neo from "../assets/neo.jpg";
+import mivida from "../assets/mivida.png";
+import Editmiv from "../assets/edit-miv.mp4";
+import Editvolk from "../assets/edit-volk.mp4";
+import Mcs from "../assets/Mcs.mp4";
+import Switch from "../assets/Switch.mp4";
+---
+
+<section class="web">
+  <div class="webhero">
+    <h2 class="webheadline">
+      KEIN BOCK AUF <br /> SOCIAL MEDIA? <br />
+      <span class="h2-span"> Das übernehmen wir für dich!</span>
+    </h2>
+
+    <Image
+      src={social}
+      alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+      loading="lazy"
+      quality="{80}"
+      decoding="async"
+      placeholder="blur"
+      format="avif"
+      widths={[800, 1600, 3000]}
+    />
+
+    <p class="webtext">
+      Mehr Kundenanfragen? Mehr Umsatz? Mehr Bewerbungen? <br />
+      Die meisten Websites haben kein klares Ziel - und genau das ist das Problem.
+    </p>
+  </div>
+  <div class="websites">
+    <h3>UNSERE FEEDS</h3>
+    <div class="ex">
+      <Image
+        src={DBP}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+      <Image
+        src={Mivida}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+      <Image
+        src={Neo}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+    </div>
+    <h3>UNSERE VIDEOS</h3>
+    <div class="ex">
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Editvolk} type="video/mp4" />
+        <source src={Editvolk} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Editmiv} type="video/mp4" />
+        <source src={Editmiv} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Mcs} type="video/mp4" />
+        <source src={Mcs} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video controls muted preload="metadata" playsinline class="videoex">
+        <source src={Switch} type="video/mp4" />
+        <source src={Switch} type="video/webm" />
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <div class="spacer"></div>
+    </div>
+  </div>
+
+  <button>LASS UNS HELFEN!</button>
+</section>
+
+<style>
+  h2 {
+    color: var(--primary);
+    font-weight: var(--weight-bold);
+    font-family: var(--gothic-wide);
+
+    text-align: center;
+    line-height: 0.9;
+  }
+
+  .h2-span {
+    color: white;
+    font-family: var(--spills);
+    font-weight: var(--weight-normal);
+  }
+
+  .web {
+    margin-block-start: 100px;
+  }
+
+  p {
+    line-height: 130%;
+    font-family: var(--gothic-wide);
+    font-weight: var(--weight-semibold);
+    color: white;
+
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  img {
+    width: 160%;
+    height: auto;
+    max-width: 1400px;
+    margin-top: 0;
+  }
+
+  @media (max-width: 700px) {
+    h2 {
+      font-size: 8vw;
+    }
+
+    .h2-span {
+      font-size: 8.5vw;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 701px) {
+    h2 {
+      font-size: 7vw;
+    }
+
+    .h2-span {
+      font-size: 7.5vw;
+    }
+
+    img {
+      width: 150%;
+    }
+
+    p {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    h2 {
+      font-size: 5vw;
+    }
+    .h2-span {
+      font-size: 5.5vw;
+    }
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    img {
+      margin-top: 2.5rem;
+    }
+  }
+
+  .webhero {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Headline oben, Bild unten */
+    align-items: center;
+    overflow-x: clip; /* Abstand proportional zur View Width */
+    overflow-y: visible;
+  }
+
+  .webheadline {
+    position: absolute;
+  }
+
+  .webtext {
+    position: absolute;
+    inset-block-end: -4rem;
+    max-width: 600%;
+  }
+
+  @media (min-width: 701px) {
+    .webtext {
+      inset-block-end: -6rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .webtext {
+      inset-block-end: -2rem;
+    }
+  }
+
+  .websites {
+    max-width: 1200px;
+    margin-block-start: 80px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Bild mittig */
+    justify-content: center;
+    padding-inline: 1rem;
+  }
+
+  .ex {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+  }
+
+  h3 {
+    color: white;
+    font-family: var(--gothic-xwide);
+    font-weight: 600;
+    font-size: 4vw;
+    align-self: flex-start;
+    margin-top: 3rem;
+  }
+
+  @media (min-width: 701px) {
+    h3 {
+      font-size: 2rem;
+    }
+  }
+
+  .marseille {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+
+    border-radius: 20px;
+    width: 90%;
+    height: auto;
+  }
+
+  .video-container {
+    position: relative;
+
+    max-width: 55%;
+    margin: 2rem auto;
+    cursor: pointer;
+  }
+
+  .videoex {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    max-width: 65%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  @media (min-width: 701px) {
+    .videoex {
+      width: auto;
+      height: 80vh;
+    }
+  }
+
+  .spacer {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    max-width: 65%;
+    height: auto;
+  }
+
+  button {
+    background: linear-gradient(
+      to right,
+      var(--primary),
+      var(--secondary),
+      var(--primary)
+    );
+    border: none;
+    border-radius: 50px;
+    color: white;
+
+    font-family: var(--gothic-wide);
+    font-weight: 800;
+    display: block;
+    margin-inline: auto;
+
+    transform: scale(1);
+    transition: transform 150ms ease-in-out;
+    cursor: pointer;
+  }
+
+  @media (max-width: 700px) {
+    button {
+      font-size: 4vw;
+      padding: 20px 40px;
+      margin-top: 2rem;
+    }
+  }
+
+  @media (min-width: 701px) {
+    button {
+      font-size: 3vw;
+      padding: 25px 35px;
+      margin-top: 4rem;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    button {
+      font-size: 2vw;
+      padding: 30px 45px;
+    }
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    transition: all 150ms ease-in-out;
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+</style>
+
+<script>
+  const videos = document.querySelectorAll("video");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.intersectionRatio === 1) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    },
+    {
+      root: document.querySelector(".scroll-wrapper"),
+      threshold: 1.0,
+    },
+  );
+
+  videos.forEach((video) => observer.observe(video));
+</script>

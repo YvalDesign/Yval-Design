@@ -1,16 +1,182 @@
 ---
-
+import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+import space from "../assets/Heroimg.png";
+import Webarea from "../components/Web-area.astro";
+import Smarea from "../components/SM-area.astro";
+import Filmarea from "../components/film-area.astro";
+import Anfrage from "../components/Anfrage.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Yval Design - Startseite">
+  <div class="hero">
+    <h1>
+      WIR BRINGEN EUCH <br />
+      <span class="tothe">ZUM <span class="moon">MOND</span></span>
+    </h1>
+
+    <Image class="heroimg" src={space} alt="Zwei junge Männer auf dem Mond" />
+    <div class="gradient"></div>
+  </div>
+
+  <section class="headline fade-in">
+    <div class="greet">MOIN!</div>
+
+    <p class="greet-sub">
+      Willkommen in der <br />
+      Nachbarschaft von <span class="prim">YVAL Design</span>
+    </p>
+
+    <p class="greet-sub">
+      Wir <span class="prim">helfen</span> euch, eure Kunden <br /> im <span
+        class="Spills-Text">Netz</span
+      > zu erwischen
+    </p>
+  </section>
+
+  <Webarea />
+
+  <Smarea />
+
+  <Filmarea />
+
+  <style>
+    .hero {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    .heroimg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gradient {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(
+        to top,
+        var(--bg) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    /* Mobile (3:4) */
+    @media (max-width: 768px) {
+      .hero {
+        aspect-ratio: 3 / 5;
+      }
+    }
+
+    /* Laptops (16:9) */
+    @media (min-width: 769px) {
+      .hero {
+        height: 100vh;
+        width: auto;
+      }
+    }
+    h1 {
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-extrabold);
+      font-size: 7vw;
+      color: white;
+
+      text-align: center;
+      position: absolute;
+      top: 5%;
+    }
+
+    .tothe {
+      font-size: 12vw;
+    }
+
+    .moon {
+      color: #5acfef;
+    }
+
+    @media (min-width: 1000px) {
+      h1 {
+        font-size: 4vw;
+      }
+
+      .tothe {
+        font-size: 7vw;
+      }
+    }
+    .headline {
+      margin-block-start: 50px;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.9s ease-out,
+        transform 0.9s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .greet {
+      color: var(--primary);
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-bold);
+      font-size: 13vw;
+
+      text-align: center;
+      margin: auto;
+    }
+
+    .greet-sub {
+      color: var(--text);
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-semibold);
+      font-size: 2rem;
+      line-height: 1.2;
+
+      text-align: center;
+      margin-inline: auto;
+      margin-block-start: 0.5rem;
+      padding-inline: 4vw;
+    }
+
+    .Spills-Text {
+      font-family: var(--spills);
+      font-size: 2.6rem;
+      font-weight: var(--weight-normal);
+    }
+
+    .prim {
+      color: var(--primary);
+    }
+  </style>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target); // Beobachtung beenden, damit Animation nur einmal läuft
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+  </script>
+</Layout>
