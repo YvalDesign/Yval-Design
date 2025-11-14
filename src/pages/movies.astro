@@ -47,7 +47,14 @@ import Workflow from "../components/film-workflow.astro";
   <div class="websites">
     <h3>UNSERE IMAGEFILME</h3>
     <div class="ex">
-      <video controls muted preload="metadata" playsinline class="videoex">
+      <video
+        controls
+        muted
+        preload="metadata"
+        playsinline
+        class="videoex"
+        poster="/assets/posters/Imagefilm.jpg"
+      >
         <source src={Mivim} type="video/mp4" />
         <source src={Mivim} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.
@@ -55,7 +62,14 @@ import Workflow from "../components/film-workflow.astro";
     </div>
     <h3>UNSERE ANIMATIONEN</h3>
     <div class="ex">
-      <video controls muted preload="metadata" playsinline class="videoex">
+      <video
+        controls
+        muted
+        preload="metadata"
+        playsinline
+        class="videoex"
+        poster="/assets/posters/Animiv.jpg"
+      >
         <source src={Eule} type="video/mp4" />
         <source src={Eule} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.
@@ -395,7 +409,7 @@ import Workflow from "../components/film-workflow.astro";
       color: white;
       font-family: var(--gothic-xwide);
       font-weight: 600;
-      font-size: 4vw;
+      font-size: 5.5vw;
       align-self: flex-start;
       margin-top: 3rem;
     }

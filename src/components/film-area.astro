@@ -35,7 +35,14 @@ import Animiv from "../assets/Animiv.mp4";
   <div class="websites">
     <h3>UNSERE IMAGEFILME</h3>
     <div class="ex">
-      <video controls muted preload="metadata" playsinline class="videoex">
+      <video
+        controls
+        muted
+        preload="metadata"
+        playsinline
+        class="videoex"
+        poster="/assets/posters/Imagefilm.jpg"
+      >
         <source src={Mivim} type="video/mp4" />
         <source src={Mivim} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.
@@ -43,7 +50,14 @@ import Animiv from "../assets/Animiv.mp4";
     </div>
     <h3>UNSERE ANIMATIONEN</h3>
     <div class="ex">
-      <video controls muted preload="metadata" playsinline class="videoex">
+      <video
+        controls
+        muted
+        preload="metadata"
+        playsinline
+        class="videoex"
+        poster="/assets/posters/Animiv.jpg"
+      >
         <source src={Eule} type="video/mp4" />
         <source src={Eule} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.
@@ -77,13 +91,13 @@ import Animiv from "../assets/Animiv.mp4";
   }
 
   .web {
-    margin-block-start: 100px;
+    margin-block-start: 80px;
     margin-block-end: 10%;
   }
 
   p {
     font-size: 1rem;
-    line-height: 130%;
+    line-height: 150%;
     font-family: var(--gothic-wide);
     font-weight: var(--weight-semibold);
     color: white;
@@ -95,7 +109,7 @@ import Animiv from "../assets/Animiv.mp4";
   .hero {
     width: 160%;
     height: auto;
-    margin-left: 7%;
+    margin-left: 4%;
     max-width: 1300px;
   }
 
@@ -150,7 +164,7 @@ import Animiv from "../assets/Animiv.mp4";
 
   .webtext {
     position: absolute;
-    inset-block-end: -1.5rem;
+    inset-block-end: -3rem;
     max-width: 600%;
   }
   @media (min-width: 701px) {
@@ -204,7 +218,7 @@ import Animiv from "../assets/Animiv.mp4";
     color: white;
     font-family: var(--gothic-xwide);
     font-weight: 600;
-    font-size: 4vw;
+    font-size: 5.5vw;
     align-self: flex-start;
     margin-top: 3rem;
   }
