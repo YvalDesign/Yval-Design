@@ -5,6 +5,9 @@ import cam from "../assets/kamera.png";
 import Mivim from "../assets/Imagefilm.mp4";
 import Eule from "../assets/Eule.mp4";
 import Animiv from "../assets/Animiv.mp4";
+import animivposter from "../assets/posters/Animiv.jpg";
+import mivimposter from "../assets/posters/Imagefilm.jpg";
+import euleposter from "../assets/posters/Eule.jpg";
 ---
 
 <section class="web">
@@ -41,7 +44,7 @@ import Animiv from "../assets/Animiv.mp4";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Imagefilm.jpg"
+        poster={mivimposter}
       >
         <source src={Mivim} type="video/mp4" />
         <source src={Mivim} type="video/webm" />
@@ -56,13 +59,20 @@ import Animiv from "../assets/Animiv.mp4";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Animiv.jpg"
+        poster={euleposter}
       >
         <source src={Eule} type="video/mp4" />
         <source src={Eule} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.
       </video>
-      <video controls muted preload="metadata" playsinline class="videoex">
+      <video
+        controls
+        muted
+        preload="metadata"
+        playsinline
+        class="videoex"
+        poster={animivposter}
+      >
         <source src={Animiv} type="video/mp4" />
         <source src={Animiv} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.

@@ -12,6 +12,9 @@ import web4 from "../assets/crowd.png";
 import web5 from "../assets/gear.png";
 import web6 from "../assets/earth.png";
 import Workflow from "../components/film-workflow.astro";
+import animivposter from "../assets/posters/Animiv.jpg";
+import mivimposter from "../assets/posters/Imagefilm.jpg";
+import euleposter from "../assets/posters/Eule.jpg";
 ---
 
 <Layout title="Movies">
@@ -53,7 +56,7 @@ import Workflow from "../components/film-workflow.astro";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Imagefilm.jpg"
+        poster={mivimposter}
       >
         <source src={Mivim} type="video/mp4" />
         <source src={Mivim} type="video/webm" />
@@ -68,13 +71,20 @@ import Workflow from "../components/film-workflow.astro";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Animiv.jpg"
+        poster={euleposter}
       >
         <source src={Eule} type="video/mp4" />
         <source src={Eule} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.
       </video>
-      <video controls muted preload="metadata" playsinline class="videoex">
+      <video
+        controls
+        muted
+        preload="metadata"
+        playsinline
+        class="videoex"
+        poster={animivposter}
+      >
         <source src={Animiv} type="video/mp4" />
         <source src={Animiv} type="video/webm" />
         Dein Browser unterstützt dieses Videoformat nicht.

@@ -10,6 +10,10 @@ import Editmiv from "../assets/edit-miv.mp4";
 import Editvolk from "../assets/edit-volk.mp4";
 import Mcs from "../assets/Mcs.mp4";
 import Switch from "../assets/Switch.mp4";
+import editmposter from "../assets/posters/edit-miv.jpg";
+import editvposter from "../assets/posters/edit-volk.jpg";
+import Mcsposter from "../assets/posters/Mcs.jpg";
+import Switchposter from "../assets/posters/Switch.jpg";
 ---
 
 <section class="web">
@@ -80,7 +84,7 @@ import Switch from "../assets/Switch.mp4";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/edit-volk.jpg"
+        poster={editvposter}
       >
         <source src={Editvolk} type="video/mp4" />
         <source src={Editvolk} type="video/webm" />
@@ -92,7 +96,7 @@ import Switch from "../assets/Switch.mp4";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/edit-miv.jpg"
+        poster={editmposter}
       >
         <source src={Editmiv} type="video/mp4" />
         <source src={Editmiv} type="video/webm" />
@@ -104,7 +108,7 @@ import Switch from "../assets/Switch.mp4";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Mcs.jpg"
+        poster={Mcsposter}
       >
         <source src={Mcs} type="video/mp4" />
         <source src={Mcs} type="video/webm" />
@@ -116,7 +120,7 @@ import Switch from "../assets/Switch.mp4";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Switch.jpg"
+        poster={Switchposter}
       >
         <source src={Switch} type="video/mp4" />
         <source src={Switch} type="video/webm" />

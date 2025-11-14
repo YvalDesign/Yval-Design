@@ -14,6 +14,10 @@ import web4 from "../assets/crowd.png";
 import web5 from "../assets/gear.png";
 import web6 from "../assets/earth.png";
 import Workflow from "../components/sm-workflow.astro";
+import editmposter from "../assets/posters/edit-miv.jpg";
+import editvposter from "../assets/posters/edit-volk.jpg";
+import Mcsposter from "../assets/posters/Mcs.jpg";
+import Switchposter from "../assets/posters/Switch.jpg";
 ---
 
 <Layout title="Social Media">
@@ -103,7 +107,7 @@ import Workflow from "../components/sm-workflow.astro";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/edit-volk.jpg"
+        poster={editvposter}
       >
         <source src={Editvolk} type="video/mp4" />
         <source src={Editvolk} type="video/webm" />
@@ -115,7 +119,7 @@ import Workflow from "../components/sm-workflow.astro";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/edit-miv.jpg"
+        poster={editmposter}
       >
         <source src={Editmiv} type="video/mp4" />
         <source src={Editmiv} type="video/webm" />
@@ -127,7 +131,7 @@ import Workflow from "../components/sm-workflow.astro";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Mcs.jpg"
+        poster={Mcsposter}
       >
         <source src={Mcs} type="video/mp4" />
         <source src={Mcs} type="video/webm" />
@@ -139,7 +143,7 @@ import Workflow from "../components/sm-workflow.astro";
         preload="metadata"
         playsinline
         class="videoex"
-        poster="/assets/posters/Switch.jpg"
+        poster={Switchposter}
       >
         <source src={Switch} type="video/mp4" />
         <source src={Switch} type="video/webm" />
