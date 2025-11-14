@@ -14,10 +14,13 @@ import web4 from "../assets/crowd.png";
 import web5 from "../assets/gear.png";
 import web6 from "../assets/earth.png";
 import Workflow from "../components/sm-workflow.astro";
-import editmposter from "../assets/posters/edit-miv.jpg";
-import editvposter from "../assets/posters/edit-volk.jpg";
-import Mcsposter from "../assets/posters/Mcs.jpg";
-import Switchposter from "../assets/posters/Switch.jpg";
+const editmposter = new URL("../assets/posters/edit-miv.jpg", import.meta.url)
+  .href;
+const editvposter = new URL("../assets/posters/edit-volk.jpg", import.meta.url)
+  .href;
+const Mcsposter = new URL("../assets/posters/mcs.jpg", import.meta.url).href;
+const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
+  .href;
 ---
 
 <Layout title="Social Media">
