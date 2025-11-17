@@ -29,8 +29,8 @@ import burgerbg from "../assets/burgerbg.png";
     /* Burger Icon mit 2 Strichen */
     .burger {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 25px;
+      right: 25px;
       width: 40px;
       height: 24px;
       background: none;
@@ -41,6 +41,15 @@ import burgerbg from "../assets/burgerbg.png";
       gap: 0.6rem;
       padding: 0;
       z-index: 51;
+    }
+
+    @media (min-width: 1000px) {
+      .burger {
+        top: 40px;
+        right: 50px;
+        width: 60px;
+        gap: 0.5rem;
+      }
     }
 
     .burger span {
@@ -60,6 +69,11 @@ import burgerbg from "../assets/burgerbg.png";
 
     .burger.open span:last-child {
       transform: rotate(-45deg) translate(5px, -5px);
+    }
+    @media (min-width: 1000px) {
+      .burger span {
+        height: 7px;
+      }
     }
 
     /* Fullscreen Menü */
