@@ -367,7 +367,8 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       display: block;
       width: 130%;
       height: auto;
-      margin-top: -10%;
+      margin-top: 0px;
+      max-width: 1400px;
     }
 
     @media (max-width: 1025px) {
@@ -384,6 +385,12 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       flex-direction: column; /* Headline oben, Bild unten */
       align-items: center; /* Abstand proportional zur View Width */
       overflow-x: hidden;
+    }
+
+    @media (min-width: 1001px) {
+      .webhero {
+        margin-top: 0;
+      }
     }
 
     .webheadline {
@@ -409,6 +416,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
     .h2-span-2 {
       position: relative;
       top: 0.12em;
+      margin-right: 1%;
 
       font-size: 8vw;
       font-family: var(--spills);
@@ -423,6 +431,20 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       color: var(--primary);
       text-align: center;
       margin-block: 1rem;
+    }
+
+    @media (min-width: 1026px) {
+      h2 {
+        font-size: 4.5vw;
+        line-height: 0.8;
+      }
+      .zwischen {
+        font-size: 7vw;
+      }
+
+      .h2-span-2 {
+        font-size: 6.1vw;
+      }
     }
 
     @media (max-width: 1025px) {
@@ -475,7 +497,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 0;
       scroll-behavior: smooth;
       scrollbar-width: thin;
     }
@@ -486,7 +508,8 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       font-weight: 600;
       font-size: 5.5vw;
       align-self: flex-start;
-      margin-top: 3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
     @media (min-width: 701px) {
@@ -494,10 +517,18 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
         font-size: 2rem;
       }
     }
+    @media (min-width: 1200px) {
+      h3 {
+        font-size: 3rem;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
+      }
+    }
 
     .marseille {
       flex: 0 0 auto;
       scroll-snap-align: center;
+      margin: 0;
 
       border-radius: 20px;
       width: 90%;
@@ -697,7 +728,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       margin-inline: auto; /* zentriert im Viewport */
       padding-inline: 1.5rem;
 
-      margin-block-start: 20%;
+      margin-block-start: 8%;
     }
   </style>
 

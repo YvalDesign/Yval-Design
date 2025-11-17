@@ -18,7 +18,7 @@ import Workflow from "../components/workflow-web.astro";
       <span class="h1-span"> Machen wir dich Sichtbar!</span>
     </h1>
 
-    <Image src={web} alt="Hero Bild" class="heroimg" />
+    <Image src={web} alt="Hero Bild" class="heroimg" placeholder="blurred" />
   </div>
 
   <div class="section-deinewebseite">
@@ -249,13 +249,13 @@ import Workflow from "../components/workflow-web.astro";
       }
     }
 
-    
-
     .heroimg {
       display: block;
       width: 100%;
       height: auto;
-      margin-block-start: -2em;
+      margin-block-start: -1em;
+      margin-right: 2%;
+      max-width: 1400px;
     }
 
     @media (max-width: 1025px) {
@@ -266,13 +266,19 @@ import Workflow from "../components/workflow-web.astro";
     }
 
     .webhero {
-        margin-top: 10%;
+      margin-top: 10%;
       position: relative;
 
       display: flex;
       flex-direction: column; /* Headline oben, Bild unten */
       align-items: center; /* Abstand proportional zur View Width */
       overflow-x: hidden;
+    }
+
+    @media (min-width: 1001px) {
+      .webhero {
+        margin-top: 0;
+      }
     }
 
     .webheadline {
@@ -314,6 +320,17 @@ import Workflow from "../components/workflow-web.astro";
       }
     }
 
+    @media (min-width: 1026px) {
+      h2 {
+        font-size: 4.5vw;
+        line-height: 0.8;
+      }
+
+      .h2-span-2 {
+        font-size: 6.1vw;
+      }
+    }
+
     @media (max-width: 1025px) {
       .h2-span-2 {
         top: 0.1em;
@@ -346,7 +363,7 @@ import Workflow from "../components/workflow-web.astro";
 
     .h2-row {
       margin-block-start: 0.5em;
-      margin-block-end: -0.5rem; /Gleicht den "oder" spills abstand aus/
+      margin-block-end: -0.5rem;
     }
 
     .h2-span-2b {
@@ -362,6 +379,13 @@ import Workflow from "../components/workflow-web.astro";
       .h2-span-2b {
         line-height: 0.5;
         font-size: 15vw;
+      }
+    }
+
+    @media (min-width: 1026px) {
+      .h2-span-2b {
+        font-size: 8vw;
+        line-height: 0.5;
       }
     }
 
@@ -389,9 +413,17 @@ import Workflow from "../components/workflow-web.astro";
       align-self: flex-start;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 769px) {
       h3 {
         font-size: 2rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      h3 {
+        font-size: 3rem;
+        margin-top: 4rem;
+        margin-bottom: 2rem;
       }
     }
 
@@ -555,7 +587,7 @@ import Workflow from "../components/workflow-web.astro";
       margin-inline: auto; /* zentriert im Viewport */
       padding-inline: 1.5rem;
 
-      margin-block-start: 20%;
+      margin-block-start: 8%;
     }
   </style>
 </Layout>
