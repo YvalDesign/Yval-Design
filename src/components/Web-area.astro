@@ -16,6 +16,7 @@ import mivida from "../assets/mivida.png";
     <Image
       src={web}
       alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+      class="heroimg"
       loading="lazy"
       quality="{80}"
       decoding="async"
@@ -29,6 +30,7 @@ import mivida from "../assets/mivida.png";
       Die meisten Websites haben kein klares Ziel - und genau das ist das Problem.
     </p>
   </div>
+  <button>LÖSEN WIR DAS PROBLEM!</button>
   <div class="websites">
     <h3>UNSERE WEBSITES</h3>
     <div class="ex">
@@ -59,8 +61,6 @@ import mivida from "../assets/mivida.png";
         />
       </div>
     </div>
-
-    <button>LÖSEN WIR DAS PROBLEM!</button>
   </div>
 </section>
 
@@ -87,7 +87,7 @@ import mivida from "../assets/mivida.png";
 
   p {
     font-size: 1rem;
-    line-height: 130%;
+    line-height: 150%;
     font-family: var(--gothic-wide);
     font-weight: var(--weight-semibold);
     color: white;
@@ -96,10 +96,12 @@ import mivida from "../assets/mivida.png";
     margin-inline: auto;
   }
 
-  img {
+  .heroimg {
     width: 125%;
     height: auto;
-    max-width: 1300px;
+    display: block;
+    max-width: 1200px;
+    margin-left: -2%;
   }
 
   @media (min-width: 701px) {
@@ -133,7 +135,7 @@ import mivida from "../assets/mivida.png";
 
   @media (min-width: 1440px) {
     img {
-      margin-top: 2.5rem;
+      margin-top: 3rem;
     }
   }
 
@@ -153,7 +155,7 @@ import mivida from "../assets/mivida.png";
   .webtext {
     position: absolute;
     inset-block-end: -4rem;
-    max-width: 600%;
+    max-width: 42ch;
   }
   @media (min-width: 701px) {
     .webtext {
@@ -163,9 +165,10 @@ import mivida from "../assets/mivida.png";
 
   @media (min-width: 1200px) {
     .webtext {
-      inset-block-end: -1rem;
+      inset-block-end: -4rem;
     }
   }
+
   .websites {
     max-width: 1200px;
     margin-block-start: 80px;
@@ -197,22 +200,34 @@ import mivida from "../assets/mivida.png";
     }
   }
 
+  @media (min-width: 1200px) {
+    h3 {
+      font-size: 3rem;
+    }
+  }
+
   .wrapper {
     overflow: hidden;
     border-radius: 30px;
+    display: block;
+    width: fit-content;
+    height: fit-content;
   }
 
   .marseille {
     border-radius: 30px;
     width: 100%;
     height: auto;
+    padding: 0;
+    margin: 0;
     transform: scale(1);
     transition: transform 300ms ease-in-out;
     overflow: hidden;
+    object-fit: cover;
   }
 
   .marseille:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all 300ms ease-in-out;
   }
 
@@ -249,7 +264,7 @@ import mivida from "../assets/mivida.png";
     button {
       font-size: 3vw;
       padding: 25px 35px;
-      margin-top: 4rem;
+      margin-top: 6rem;
     }
   }
 
