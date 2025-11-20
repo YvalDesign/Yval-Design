@@ -1,5 +1,4 @@
 ---
-import Layout from "../layouts/main.astro";
 import { Image } from "astro:assets";
 import social from "../assets/social.png";
 import DBP from "../assets/dpb.jpg";
@@ -15,7 +14,8 @@ const editmposter = new URL("../assets/posters/edit-miv.jpg", import.meta.url)
 const editvposter = new URL("../assets/posters/edit-volk.jpg", import.meta.url)
   .href;
 const Mcsposter = new URL("../assets/posters/mcs.jpg", import.meta.url).href;
-const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url);
+const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
+  .href;
 ---
 
 <section class="web">
@@ -83,54 +83,42 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url);
     </div>
     <h3>UNSERE VIDEOS</h3>
     <div class="ex">
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={editvposter}
-      >
-        <source src={Editvolk} type="video/mp4" />
-        <source src={Editvolk} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={editmposter}
-      >
-        <source src={Editmiv} type="video/mp4" />
-        <source src={Editmiv} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={Mcsposter}
-      >
-        <source src={Mcs} type="video/mp4" />
-        <source src={Mcs} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={Switchposter}
-      >
-        <source src={Switch} type="video/mp4" />
-        <source src={Switch} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
+      <div class="video-wrapper">
+        <img src={editvposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Editvolk} type="video/mp4" />
+          <source src={Editvolk} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
+
+      <div class="video-wrapper">
+        <img src={editmposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Editmiv} type="video/mp4" />
+          <source src={Editmiv} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
+
+      <div class="video-wrapper">
+        <img src={Mcsposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Mcs} type="video/mp4" />
+          <source src={Mcs} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
+
+      <div class="video-wrapper">
+        <img src={Switchposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Switch} type="video/mp4" />
+          <source src={Switch} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
+
       <div class="spacer"></div>
     </div>
   </div>
@@ -271,7 +259,8 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url);
     gap: 1rem;
     padding-top: 0;
     scroll-behavior: smooth;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    width: 100%;
   }
 
   h3 {
@@ -300,32 +289,46 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url);
   .marseille {
     flex: 0 0 auto;
     scroll-snap-align: center;
-    margin: 0;
 
     border-radius: 20px;
-    width: 90%;
+    width: 90vw;
     height: auto;
   }
 
-  .video-container {
+  .video-wrapper {
     position: relative;
-
-    max-width: 55%;
-    margin: 2rem auto;
-    cursor: pointer;
-  }
-
-  .videoex {
     flex: 0 0 auto;
     scroll-snap-align: center;
     max-width: 65%;
-    height: auto;
     border-radius: 8px;
+    overflow: hidden; /* damit Poster & Video sauber abgerundet sind */
   }
 
+  .videoex {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Poster-Bild liegt über dem Video */
+  .video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 200ms ease;
+  }
+
+  /* wird per JS gesetzt, sobald Video geladen ist */
+  .video-poster.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Falls du die 80vh-Logik behalten willst, eher hier: */
   @media (min-width: 701px) {
-    .videoex {
-      width: auto;
+    .video-wrapper {
       height: 80vh;
     }
   }
@@ -392,8 +395,10 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url);
 </style>
 
 <script>
+  // Alle Videos holen
   const videos = document.querySelectorAll("video");
 
+  // IntersectionObserver: Videos nur abspielen, wenn komplett im Viewport
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -406,10 +411,123 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url);
       });
     },
     {
-      root: document.querySelector(".scroll-wrapper"),
+      root: null, // viewport
       threshold: 1.0,
     },
   );
 
   videos.forEach((video) => observer.observe(video));
+
+  // 🔥 Poster-Overlay ausblenden, sobald das Video bereit ist
+  const wrappers = document.querySelectorAll(".video-wrapper");
+  wrappers.forEach((wrapper) => {
+    const video = wrapper.querySelector("video");
+    const posterImg = wrapper.querySelector(".video-poster");
+    if (!video || !posterImg) return;
+
+    const hidePoster = () => {
+      posterImg.classList.add("is-hidden");
+    };
+
+    // Wenn genug Daten da sind, um zu starten
+    video.addEventListener("loadeddata", hidePoster, { once: true });
+    // Fallback: spätestens beim Play ausblenden
+    video.addEventListener("play", hidePoster, { once: true });
+  });
+
+  // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
+  const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
+
+  window.addEventListener(
+    "wheel",
+    function (e) {
+      if (hscrollContainers.length === 0) return;
+
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = viewportHeight / 2;
+
+      // 1. Finde den .ex-Container, der am nächsten zur Mitte des Viewports ist
+      let activeContainer = null;
+      let minDistance = Infinity;
+
+      for (const el of hscrollContainers) {
+        const rect = el.getBoundingClientRect();
+        // nur Container berücksichtigen, die überhaupt im Viewport sind
+        if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
+
+        const elementCenter = rect.top + rect.height / 2;
+        const distanceToCenter = Math.abs(viewportCenter - elementCenter);
+
+        if (distanceToCenter < minDistance) {
+          minDistance = distanceToCenter;
+          activeContainer = el;
+        }
+      }
+
+      const CENTER_THRESHOLD = 140; // anpassen: kleiner = strenger, größer = großzügiger
+      if (!activeContainer || minDistance > CENTER_THRESHOLD) {
+        return;
+      }
+
+      const container = activeContainer;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) return;
+
+      const currentScroll = container.scrollLeft;
+
+      const EPS = 1;
+      const atStart = currentScroll <= EPS;
+      const atEnd = currentScroll >= maxScroll - EPS;
+
+      const scrollingDown = e.deltaY > 0;
+      const scrollingUp = e.deltaY < 0;
+
+      // Wenn wir am linken/rechten Rand sind und in die "falsche" Richtung scrollen → normal vertikal scrollen
+      if ((atEnd && scrollingDown) || (atStart && scrollingUp)) {
+        return;
+      }
+
+      // Während eine Animation läuft, keine neuen Schritte zulassen,
+      // aber vertikales Scrollen blockieren, damit du nicht "rausfällst"
+      if (container.__isAnimating) {
+        e.preventDefault();
+        return;
+      }
+
+      e.preventDefault();
+
+      const direction = scrollingDown ? 1 : -1;
+
+      // Schrittweite: Breite des ersten Kindes (Bild/Video) + geschätzter Gap
+      const firstItem = container.firstElementChild;
+      let itemWidth;
+
+      if (firstItem) {
+        const itemRect = firstItem.getBoundingClientRect();
+        itemWidth = itemRect.width;
+      } else {
+        itemWidth = container.clientWidth * 0.8;
+      }
+
+      const GAP_ESTIMATE = 16; // px, kannst du an deinen gap anpassen
+      const STEP = itemWidth + GAP_ESTIMATE;
+
+      let target = currentScroll + direction * STEP;
+      target = Math.max(0, Math.min(maxScroll, target));
+
+      container.__isAnimating = true;
+
+      container.scrollTo({
+        left: target,
+        behavior: "smooth",
+      });
+
+      // Cooldown: eine Geste = ein Schritt
+      const ANIMATION_DURATION = 400; // ms
+      setTimeout(() => {
+        container.__isAnimating = false;
+      }, ANIMATION_DURATION);
+    },
+    { passive: false },
+  );
 </script>

@@ -1,5 +1,4 @@
 ---
-import Layout from "../layouts/main.astro";
 import { Image } from "astro:assets";
 import cam from "../assets/kamera.png";
 import Mivim from "../assets/Imagefilm.mp4";
@@ -41,45 +40,35 @@ const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
   <div class="websites">
     <h3>UNSERE IMAGEFILME</h3>
     <div class="ex">
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={mivimposter}
-      >
-        <source src={Mivim} type="video/mp4" />
-        <source src={Mivim} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
+      <div class="video-wrapper">
+        <img src={mivimposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Mivim} type="video/mp4" />
+          <source src={Mivim} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
     </div>
     <h3>UNSERE ANIMATIONEN</h3>
     <div class="ex">
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={euleposter}
-      >
-        <source src={Eule} type="video/mp4" />
-        <source src={Eule} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
-      <video
-        controls
-        muted
-        preload="metadata"
-        playsinline
-        class="videoex"
-        poster={animivposter}
-      >
-        <source src={Animiv} type="video/mp4" />
-        <source src={Animiv} type="video/webm" />
-        Dein Browser unterstützt dieses Videoformat nicht.
-      </video>
+      <div class="video-wrapper">
+        <img src={euleposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Eule} type="video/mp4" />
+          <source src={Eule} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
+
+      <div class="video-wrapper">
+        <img src={animivposter} alt="" class="video-poster" loading="lazy" />
+        <video controls muted preload="metadata" playsinline class="videoex">
+          <source src={Animiv} type="video/mp4" />
+          <source src={Animiv} type="video/webm" />
+          Dein Browser unterstützt dieses Videoformat nicht.
+        </video>
+      </div>
+
       <div class="spacer"></div>
     </div>
   </div>
@@ -210,13 +199,38 @@ const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
     scrollbar-width: thin;
   }
 
-  .videoex {
+  .video-wrapper {
+    position: relative;
     flex: 0 0 auto;
     scroll-snap-align: center;
-
     border-radius: 20px;
+    overflow: hidden;
     width: 95%;
-    height: auto;
+    aspect-ratio: 16 / 9; /* ggf. auf 9/16 stellen, wenn die Videos hochkant sind */
+    background-color: #000;
+  }
+
+  .videoex {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Poster-Bild liegt über dem Video */
+  .video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 200ms ease;
+  }
+
+  /* wird per JS gesetzt, sobald Video geladen ist */
+  .video-poster.is-hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .spacer {
@@ -283,7 +297,7 @@ const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
     button {
       font-size: 3vw;
       padding: 25px 35px;
-      margin-top: 4rem;
+      margin-top: 7.5rem;
     }
   }
 
@@ -303,3 +317,141 @@ const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
     transform: scale(0.97);
   }
 </style>
+
+<script>
+  // Alle Videos holen
+  const videos = document.querySelectorAll("video");
+
+  // IntersectionObserver: Videos nur abspielen, wenn komplett im Viewport
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.intersectionRatio === 1) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    },
+    {
+      root: null, // viewport
+      threshold: 1.0,
+    },
+  );
+
+  videos.forEach((video) => observer.observe(video));
+
+  // 🔥 Poster-Overlay ausblenden, sobald das Video bereit ist
+  const wrappers = document.querySelectorAll(".video-wrapper");
+  wrappers.forEach((wrapper) => {
+    const video = wrapper.querySelector("video");
+    const posterImg = wrapper.querySelector(".video-poster");
+    if (!video || !posterImg) return;
+
+    const hidePoster = () => {
+      posterImg.classList.add("is-hidden");
+    };
+
+    // Wenn genug Daten da sind, um zu starten
+    video.addEventListener("loadeddata", hidePoster, { once: true });
+    // Fallback: spätestens beim Play ausblenden
+    video.addEventListener("play", hidePoster, { once: true });
+  });
+
+  // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
+  const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
+
+  window.addEventListener(
+    "wheel",
+    function (e) {
+      if (hscrollContainers.length === 0) return;
+
+      const viewportHeight = window.innerHeight;
+      const viewportCenter = viewportHeight / 2;
+
+      // 1. Finde den .ex-Container, der am nächsten zur Mitte des Viewports ist
+      let activeContainer = null;
+      let minDistance = Infinity;
+
+      for (const el of hscrollContainers) {
+        const rect = el.getBoundingClientRect();
+        // nur Container berücksichtigen, die überhaupt im Viewport sind
+        if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
+
+        const elementCenter = rect.top + rect.height / 2;
+        const distanceToCenter = Math.abs(viewportCenter - elementCenter);
+
+        if (distanceToCenter < minDistance) {
+          minDistance = distanceToCenter;
+          activeContainer = el;
+        }
+      }
+
+      const CENTER_THRESHOLD = 140; // anpassen: kleiner = strenger, größer = großzügiger
+      if (!activeContainer || minDistance > CENTER_THRESHOLD) {
+        return;
+      }
+
+      const container = activeContainer;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 0) return;
+
+      const currentScroll = container.scrollLeft;
+
+      const EPS = 1;
+      const atStart = currentScroll <= EPS;
+      const atEnd = currentScroll >= maxScroll - EPS;
+
+      const scrollingDown = e.deltaY > 0;
+      const scrollingUp = e.deltaY < 0;
+
+      // Wenn wir am linken/rechten Rand sind und in die "falsche" Richtung scrollen → normal vertikal scrollen
+      if ((atEnd && scrollingDown) || (atStart && scrollingUp)) {
+        return;
+      }
+
+      // Während eine Animation läuft, keine neuen Schritte zulassen,
+      // aber vertikales Scrollen blockieren, damit du nicht "rausfällst"
+      if (container.__isAnimating) {
+        e.preventDefault();
+        return;
+      }
+
+      e.preventDefault();
+
+      const direction = scrollingDown ? 1 : -1;
+
+      // Schrittweite: Breite des ersten Kindes (Bild/Video) + geschätzter Gap
+      const firstItem = container.firstElementChild;
+      let itemWidth;
+
+      if (firstItem) {
+        const itemRect = firstItem.getBoundingClientRect();
+        itemWidth = itemRect.width;
+      } else {
+        itemWidth = container.clientWidth * 0.8;
+      }
+
+      const GAP_ESTIMATE = 16; // px, kannst du an deinen gap anpassen
+      const STEP = itemWidth + GAP_ESTIMATE;
+
+      let target = currentScroll + direction * STEP;
+      target = Math.max(0, Math.min(maxScroll, target));
+
+      container.__isAnimating = true;
+
+      container.scrollTo({
+        left: target,
+        behavior: "smooth",
+      });
+
+      // Cooldown: eine Geste = ein Schritt
+      const ANIMATION_DURATION = 400; // ms
+      setTimeout(() => {
+        container.__isAnimating = false;
+      }, ANIMATION_DURATION);
+    },
+    { passive: false },
+  );
+</script>

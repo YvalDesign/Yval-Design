@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/main.astro";
+---
+
+<html>
+  <body style="margin:0">
+    <div style="height: 100vh; background: lightcoral;">
+      <h1>Oben</h1>
+    </div>
+
+    <div
+      id="hscroll"
+      style="
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+    "
+    >
+      <div style="flex: 0 0 100vw; background: red; scroll-snap-align: center;">
+      </div>
+      <div
+        style="flex: 0 0 100vw; background: green; scroll-snap-align: center;"
+      >
+      </div>
+      <div
+        style="flex: 0 0 100vw; background: blue; scroll-snap-align: center;"
+      >
+      </div>
+    </div>
+
+    <div style="height: 100vh; background: lightblue;">
+      <h1>Unten</h1>
+    </div>
+
+    <script>
+      const hscroll = document.getElementById("hscroll");
+      window.addEventListener(
+        "wheel",
+        function (e) {
+          const rect = hscroll.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+          const maxScroll = hscroll.scrollWidth - hscroll.clientWidth;
+          const currentScroll = hscroll.scrollLeft;
+
+          if (!isVisible || maxScroll <= 0) return;
+
+          const scrollingRight = e.deltaY > 0 && currentScroll < maxScroll;
+          const scrollingLeft = e.deltaY < 0 && currentScroll > 0;
+
+          if (scrollingRight || scrollingLeft) {
+            e.preventDefault();
+            hscroll.scrollLeft += e.deltaY;
+          }
+        },
+        { passive: false },
+      );
+    </script>
+  </body>
+</html>
