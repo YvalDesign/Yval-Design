@@ -43,7 +43,9 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       hat jetzt ein Ende!
     </p>
   </div>
-  <button>LASS UNS HELFEN!</button>
+  <a href="/socialmedia" class="btn">
+    <button>LASS UNS HELFEN!</button>
+  </a>
   <div class="websites">
     <h3>UNSERE FEEDS</h3>
     <div class="ex">
@@ -359,6 +361,10 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
     transform: scale(1);
     transition: transform 150ms ease-in-out;
     cursor: pointer;
+  }
+
+  .btn {
+    text-decoration: none;
   }
 
   @media (max-width: 700px) {

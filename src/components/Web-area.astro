@@ -1,5 +1,4 @@
 ---
-import Layout from "../layouts/main.astro";
 import { Image } from "astro:assets";
 import web from "../assets/Leistungen.png";
 import faktum from "../assets/faktum.png";
@@ -30,7 +29,9 @@ import mivida from "../assets/mivida.png";
       Die meisten Websites haben kein klares Ziel - und genau das ist das Problem.
     </p>
   </div>
-  <button>LÖSEN WIR DAS PROBLEM!</button>
+  <a href="/webdesign" class="btn">
+    <button>LÖSEN WIR DAS PROBLEM!</button>
+  </a>
   <div class="websites">
     <h3>UNSERE WEBSITES</h3>
     <div class="ex">
@@ -250,6 +251,9 @@ import mivida from "../assets/mivida.png";
     transform: scale(1);
     transition: transform 150ms ease-in-out;
     cursor: pointer;
+  }
+  .btn {
+    text-decoration: none;
   }
 
   @media (max-width: 700px) {
