@@ -86,8 +86,14 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
     <h3>UNSERE VIDEOS</h3>
     <div class="ex">
       <div class="video-wrapper">
-        <img src={editvposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
+        <video
+          controls
+          muted
+          post="{editvposter}"
+          preload="auto"
+          playsinline
+          class="videoex"
+        >
           <source src={Editvolk} type="video/mp4" />
           <source src={Editvolk} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
@@ -95,8 +101,14 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       </div>
 
       <div class="video-wrapper">
-        <img src={editmposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
+        <video
+          controls
+          muted
+          poster={editmposter}
+          preload="auto"
+          playsinline
+          class="videoex"
+        >
           <source src={Editmiv} type="video/mp4" />
           <source src={Editmiv} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
@@ -104,8 +116,14 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       </div>
 
       <div class="video-wrapper">
-        <img src={Mcsposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
+        <video
+          controls
+          muted
+          {Mcsposter}
+          preload="auto"
+          playsinline
+          class="videoex"
+        >
           <source src={Mcs} type="video/mp4" />
           <source src={Mcs} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
@@ -113,8 +131,14 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       </div>
 
       <div class="video-wrapper">
-        <img src={Switchposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
+        <video
+          controls
+          muted
+          poster="{Switchposter}"
+          preload="auto"
+          playsinline
+          class="videoex"
+        >
           <source src={Switch} type="video/mp4" />
           <source src={Switch} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
@@ -314,22 +338,6 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
     display: block;
   }
 
-  /* Poster-Bild liegt über dem Video */
-  .video-poster {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 200ms ease;
-  }
-
-  /* wird per JS gesetzt, sobald Video geladen ist */
-  .video-poster.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
   /* Falls du die 80vh-Logik behalten willst, eher hier: */
   @media (min-width: 701px) {
     .video-wrapper {
@@ -425,23 +433,6 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
   );
 
   videos.forEach((video) => observer.observe(video));
-
-  // 🔥 Poster-Overlay ausblenden, sobald das Video bereit ist
-  const wrappers = document.querySelectorAll(".video-wrapper");
-  wrappers.forEach((wrapper) => {
-    const video = wrapper.querySelector("video");
-    const posterImg = wrapper.querySelector(".video-poster");
-    if (!video || !posterImg) return;
-
-    const hidePoster = () => {
-      posterImg.classList.add("is-hidden");
-    };
-
-    // Wenn genug Daten da sind, um zu starten
-    video.addEventListener("loadeddata", hidePoster, { once: true });
-    // Fallback: spätestens beim Play ausblenden
-    video.addEventListener("play", hidePoster, { once: true });
-  });
 
   // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
   const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
