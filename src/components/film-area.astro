@@ -4,11 +4,6 @@ import cam from "../assets/kamera.png";
 import Mivim from "../assets/Imagefilm.mp4";
 import Eule from "../assets/Eule.mp4";
 import Animiv from "../assets/Animiv.mp4";
-const mivimposter = new URL("../assets/posters/mivim.jpg", import.meta.url)
-  .href;
-const euleposter = new URL("../assets/posters/eule.jpg", import.meta.url).href;
-const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
-  .href;
 ---
 
 <section class="web">
@@ -43,10 +38,14 @@ const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
     <h3>UNSERE IMAGEFILME</h3>
     <div class="ex">
       <div class="video-wrapper">
-        <img src={mivimposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
-          <source src={Mivim} type="video/mp4" />
-          <source src={Mivim} type="video/webm" />
+        <video
+          controls
+          muted
+          preload="auto"
+          playsinline
+          class="videoex"
+          src={Mivim}
+        >
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>
@@ -54,19 +53,27 @@ const animivposter = new URL("../assets/posters/animiv.jpg", import.meta.url)
     <h3>UNSERE ANIMATIONEN</h3>
     <div class="ex">
       <div class="video-wrapper">
-        <img src={euleposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
-          <source src={Eule} type="video/mp4" />
-          <source src={Eule} type="video/webm" />
+        <video
+          controls
+          muted
+          preload="auto"
+          playsinline
+          class="videoex"
+          src={Eule}
+        >
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>
 
       <div class="video-wrapper">
-        <img src={animivposter} alt="" class="video-poster" loading="lazy" />
-        <video controls muted preload="metadata" playsinline class="videoex">
-          <source src={Animiv} type="video/mp4" />
-          <source src={Animiv} type="video/webm" />
+        <video
+          controls
+          muted
+          preload="metadata"
+          playsinline
+          class="videoex"
+          src={Animiv}
+        >
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>

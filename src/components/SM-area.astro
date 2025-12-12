@@ -9,13 +9,6 @@ import Editmiv from "../assets/edit-miv.mp4";
 import Editvolk from "../assets/edit-volk.mp4";
 import Mcs from "../assets/Mcs.mp4";
 import Switch from "../assets/Switch.mp4";
-const editmposter = new URL("../assets/posters/edit-miv.jpg", import.meta.url)
-  .href;
-const editvposter = new URL("../assets/posters/edit-volk.jpg", import.meta.url)
-  .href;
-const Mcsposter = new URL("../assets/posters/mcs.jpg", import.meta.url).href;
-const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
-  .href;
 ---
 
 <section class="web">
@@ -89,13 +82,11 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
         <video
           controls
           muted
-          post="{editvposter}"
           preload="auto"
           playsinline
           class="videoex"
+          src={Editvolk}
         >
-          <source src={Editvolk} type="video/mp4" />
-          <source src={Editvolk} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>
@@ -104,13 +95,11 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
         <video
           controls
           muted
-          poster={editmposter}
           preload="auto"
           playsinline
           class="videoex"
+          src={Editmiv}
         >
-          <source src={Editmiv} type="video/mp4" />
-          <source src={Editmiv} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>
@@ -119,13 +108,11 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
         <video
           controls
           muted
-          {Mcsposter}
           preload="auto"
           playsinline
           class="videoex"
+          src={Mcs}
         >
-          <source src={Mcs} type="video/mp4" />
-          <source src={Mcs} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>
@@ -134,13 +121,11 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
         <video
           controls
           muted
-          poster="{Switchposter}"
           preload="auto"
           playsinline
           class="videoex"
+          src={Switch}
         >
-          <source src={Switch} type="video/mp4" />
-          <source src={Switch} type="video/webm" />
           Dein Browser unterstützt dieses Videoformat nicht.
         </video>
       </div>
@@ -326,23 +311,26 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
     flex: 0 0 auto;
     scroll-snap-align: center;
     max-width: 65%;
-    aspect-ratio: 16 9;
-    /*height: 45vh;*/
+    aspect-ratio: 16 9; /* Seitenverhältnis fixiert */
+
+    /* 💥 NEUE KORREKTUR: Feste Höhe für mobile/kleine Bildschirme setzen, damit die Videos Dimensionen haben, auch wenn das Poster fehlt. */
+    height: 50.5vh;
+
     border-radius: 8px;
-    overflow: hidden; /* damit Poster & Video sauber abgerundet sind */
+    overflow: hidden;
+  }
+  /* Falls du die 80vh-Logik behalten willst, eher hier: */
+  @media (min-width: 701px) {
+    .video-wrapper {
+      max-width: 80%; /* Vielleicht etwas breiter auf Desktop? */
+      height: 80vh;
+    }
   }
 
   .videoex {
     width: 100%;
     height: 100%;
     display: block;
-  }
-
-  /* Falls du die 80vh-Logik behalten willst, eher hier: */
-  @media (min-width: 701px) {
-    .video-wrapper {
-      height: 80vh;
-    }
   }
 
   .spacer {
