@@ -744,42 +744,39 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
     // Alle Videos holen
     const videos = document.querySelectorAll("video");
 
-    // IntersectionObserver: Videos nur abspielen, wenn komplett im Viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-          if (entry.intersectionRatio === 1) {
-            video.play();
+
+          // WICHTIG: Wir prüfen hier auf "isIntersecting" statt auf die genaue Ratio.
+          // Sobald der Threshold (unten definiert) überschritten ist, ist isIntersecting = true.
+          if (entry.isIntersecting) {
+            // Wir fangen Fehler ab, falls das Handy im Stromsparmodus ist (da ist Autoplay verboten)
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch((error) => {
+                console.log(
+                  "Autoplay blockiert (oft wegen Stromsparmodus):",
+                  error,
+                );
+              });
+            }
           } else {
             video.pause();
           }
         });
       },
       {
-        root: null, // viewport
-        threshold: 1.0,
+        root: null,
+        // HIER LAG DAS PROBLEM:
+        // Statt 1.0 (100%) nehmen wir 0.5. Das heißt:
+        // Sobald das Video zur HÄLFTE im Bild ist, fängt es an zu spielen.
+        threshold: 0.5,
       },
     );
 
     videos.forEach((video) => observer.observe(video));
-
-    // 🔥 Poster-Overlay ausblenden, sobald das Video bereit ist
-    const wrappers = document.querySelectorAll(".video-wrapper");
-    wrappers.forEach((wrapper) => {
-      const video = wrapper.querySelector("video");
-      const posterImg = wrapper.querySelector(".video-poster");
-      if (!video || !posterImg) return;
-
-      const hidePoster = () => {
-        posterImg.classList.add("is-hidden");
-      };
-
-      // Wenn genug Daten da sind, um zu starten
-      video.addEventListener("loadeddata", hidePoster, { once: true });
-      // Fallback: spätestens beim Play ausblenden
-      video.addEventListener("play", hidePoster, { once: true });
-    });
 
     // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
     const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
