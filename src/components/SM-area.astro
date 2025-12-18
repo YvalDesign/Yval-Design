@@ -318,9 +318,6 @@ import Switch from "../assets/Switch.mp4";
 
     border-radius: 8px;
     overflow: hidden;
-
-    background-color: #000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
   /* Falls du die 80vh-Logik behalten willst, eher hier: */
   @media (min-width: 701px) {
@@ -405,20 +402,34 @@ import Switch from "../assets/Switch.mp4";
   // Alle Videos holen
   const videos = document.querySelectorAll("video");
 
-  // IntersectionObserver: Videos nur abspielen, wenn komplett im Viewport
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const video = entry.target;
-        if (entry.intersectionRatio === 1) {
-          video.play();
+
+        // WICHTIG: Wir prüfen hier auf "isIntersecting" statt auf die genaue Ratio.
+        // Sobald der Threshold (unten definiert) überschritten ist, ist isIntersecting = true.
+        if (entry.isIntersecting) {
+          // Wir fangen Fehler ab, falls das Handy im Stromsparmodus ist (da ist Autoplay verboten)
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log(
+                "Autoplay blockiert (oft wegen Stromsparmodus):",
+                error,
+              );
+            });
+          }
         } else {
           video.pause();
         }
       });
     },
     {
-      root: null, // viewport
+      root: null,
+      // HIER LAG DAS PROBLEM:
+      // Statt 1.0 (100%) nehmen wir 0.5. Das heißt:
+      // Sobald das Video zur HÄLFTE im Bild ist, fängt es an zu spielen.
       threshold: 0.5,
     },
   );

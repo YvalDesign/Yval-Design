@@ -335,21 +335,30 @@ import Animiv from "../assets/Animiv.mp4";
   // Alle Videos holen
   const videos = document.querySelectorAll("video");
 
-  // IntersectionObserver: Videos nur abspielen, wenn komplett im Viewport
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         const video = entry.target;
-        if (entry.intersectionRatio === 1) {
-          video.play();
+
+        // Änderung 1: Wir prüfen isIntersecting (basiert auf dem threshold unten)
+        if (entry.isIntersecting) {
+          const playPromise = video.play();
+
+          // Änderung 2: Sicherheitsabfrage für Mobile (Low Power Mode)
+          if (playPromise !== undefined) {
+            playPromise.catch((error) => {
+              console.log("Autoplay blockiert:", error);
+            });
+          }
         } else {
           video.pause();
         }
       });
     },
     {
-      root: null, // viewport
-      threshold: 1.0,
+      root: null,
+      // Änderung 3: 0.5 statt 1.0 -> Video startet, wenn es zur HÄLFTE sichtbar ist
+      threshold: 0.5,
     },
   );
 
