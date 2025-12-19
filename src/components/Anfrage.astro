@@ -1,10 +1,16 @@
 ---
-import Layout from "../layouts/main.astro";
+const success = Astro.url.searchParams.get("success");
 ---
 
 <h2>LASST UNS <br /> <span class="quatschen">quatschen</span></h2>
 
-<form id="contact" action="/api/contact" method="POST" novalidate>
+<form
+  id="contact"
+  action="/api/contact"
+  method="POST"
+  novalidate
+  data-astro-reload
+>
   <div class="form">
     <div class="field">
       <label for="firstName" class="sr-only">Vorame</label>
@@ -338,73 +344,124 @@ import Layout from "../layouts/main.astro";
 </style>
 
 <script>
-  const form = document.getElementById("contact");
-  const fields = {
-    firstName: {
-      el: document.getElementById("firstName"),
-      err: document.getElementById("err-firstName"),
-    },
-    lastName: {
-      el: document.getElementById("lastName"),
-      err: document.getElementById("err-lastName"),
-    },
-    email: {
-      el: document.getElementById("email"),
-      err: document.getElementById("err-email"),
-    },
-    phone: {
-      el: document.getElementById("phone"),
-      err: document.getElementById("err-phone"),
-    },
-    message: {
-      el: document.getElementById("message"),
-      err: document.getElementById("err-message"),
-    },
-  };
-  const ok = document.getElementById("ok");
+  // Initialisierung für Astro View Transitions
+  document.addEventListener("astro:page-load", () => initForm());
+  document.addEventListener("DOMContentLoaded", () => initForm());
 
-  function showValidity(f) {
-    const el = f.el,
-      err = f.err;
-    const valid = el.checkValidity();
-    err.hidden = valid;
-    return valid;
-  }
-
-  Object.values(fields).forEach((f) => {
-    f.el.addEventListener("input", () => showValidity(f));
-    f.el.addEventListener("blur", () => showValidity(f));
-  });
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // Client-Side Validierung
-    const allValid = Object.values(fields).every(showValidity);
-    if (!allValid) return;
-
-    // Honeypot abfangen
-    if (form.company && form.company.value) return;
-
-    // Abschicken (AJAX)
-    const data = {
-      name: fields.name.el.value.trim(),
-      email: fields.email.el.value.trim(),
-      message: fields.msg.el.value.trim(),
-    };
-
-    try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-        credentials: "same-origin",
-      });
-      if (!res.ok) throw new Error("Serverfehler");
-      ok.hidden = false;
-      form.reset();
-    } catch (err) {
-      alert("Senden fehlgeschlagen. Bitte später erneut versuchen.");
+  function initForm() {
+    // 1. Animationen (bleibt gleich)
+    const fadeElements = document.querySelectorAll(".fade-in");
+    if (fadeElements.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              obs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      fadeElements.forEach((el) => observer.observe(el));
     }
-  });
+
+    // 2. Das Formular
+    const contactForm = document.getElementById("contact");
+    if (!contactForm || contactForm.dataset.listenerAttached === "true") return;
+
+    contactForm.dataset.listenerAttached = "true";
+
+    contactForm.addEventListener("submit", async function (e) {
+      e.preventDefault(); // WICHTIG: Wir verbieten dem Browser das normale Senden!
+
+      let hasError = false;
+      const get = (name) => contactForm.querySelector(`[name="${name}"]`);
+      const err = (id) => document.getElementById(id);
+
+      // --- VALIDIERUNG START ---
+      // Reset Errors
+      contactForm
+        .querySelectorAll(".error")
+        .forEach((el) => (el.hidden = true));
+      contactForm
+        .querySelectorAll(".input-error")
+        .forEach((el) => el.classList.remove("input-error"));
+
+      // Checks
+      if (!get("firstName").value.trim()) {
+        err("err-firstName").hidden = false;
+        hasError = true;
+      }
+      if (!get("lastName").value.trim()) {
+        err("err-lastName").hidden = false;
+        hasError = true;
+      }
+      if (!get("phone").value.trim()) {
+        err("err-phone").hidden = false;
+        hasError = true;
+      }
+      if (!get("message").value.trim()) {
+        err("err-message").hidden = false;
+        hasError = true;
+      }
+
+      const email = get("email");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+        err("err-email").hidden = false;
+        hasError = true;
+      }
+
+      const budgetGroup = contactForm.querySelector(".budgetoptions");
+      if (!contactForm.querySelector('input[name="budget"]:checked')) {
+        if (budgetGroup) budgetGroup.style.border = "2px solid red";
+        hasError = true;
+      } else {
+        if (budgetGroup) budgetGroup.style.border = "none";
+      }
+
+      // Bei Fehler: Abbrechen & Scrollen
+      if (hasError) {
+        const firstErr =
+          contactForm.querySelector(".error:not([hidden])") || budgetGroup;
+        if (firstErr)
+          firstErr.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      // --- VALIDIERUNG ENDE ---
+
+      // 3. SENDEN (Der neue Teil!)
+      const btn = contactForm.querySelector("button");
+      const originalBtnText = btn.innerText;
+      btn.disabled = true;
+      btn.innerText = "Sende...";
+
+      try {
+        // Wir bauen das Paket selbst
+        const formData = new FormData(contactForm);
+
+        // Wir senden es an die API
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          body: formData, // Browser setzt hier automatisch den richtigen Content-Type!
+        });
+
+        if (response.ok) {
+          // Erfolg!
+          contactForm.reset(); // Felder leeren
+          document.getElementById("ok").hidden = false; // "Danke"-Text anzeigen
+          btn.innerText = "GESENDET ✅";
+        } else {
+          alert("Fehler beim Senden. Bitte versuche es später.");
+          btn.disabled = false;
+          btn.innerText = originalBtnText;
+        }
+      } catch (error) {
+        console.error("Netzwerkfehler:", error);
+        alert("Ein Fehler ist aufgetreten.");
+        btn.disabled = false;
+        btn.innerText = originalBtnText;
+      }
+    });
+  }
 </script>
