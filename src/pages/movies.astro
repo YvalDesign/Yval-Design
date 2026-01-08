@@ -270,7 +270,7 @@ import Workflow from "../components/film-workflow.astro";
   <style>
     h1 {
       color: var(--primary);
-      font-size: 6vw;
+      font-size: 12vw;
       font-weight: var(--weight-bold);
       font-family: var(--gothic-wide);
 
@@ -285,31 +285,18 @@ import Workflow from "../components/film-workflow.astro";
       font-weight: var(--weight-normal);
     }
 
-    @media (max-width: 1025px) {
-      h1 {
-        font-size: 12vw;
-        line-height: 0.3;
-
-        .h1-span {
-          font-size: 7vw;
-        }
+      .h1-span {
+        font-size: 7vw;
       }
-    }
+    
 
     .heroimg {
       display: block;
       width: 130%;
       height: auto;
-      max-width: 1400px;
-      margin-block-start: 4%;
-    }
-
-    @media (max-width: 1025px) {
-      .heroimg {
-        width: 150%;
-        margin-block-start: 10%;
-        margin-left: 3%;
-      }
+      max-width: 1200px;
+      margin left: 3%;
+      margin-block-start: 10%;
     }
 
     .webhero {
@@ -322,9 +309,43 @@ import Workflow from "../components/film-workflow.astro";
       overflow-x: hidden;
     }
 
-    @media (min-width: 1001px) {
+    @media (min-width: 1026px) {
+      h1 {
+        font-size: 9vw;
+        line-height: 0.4;
+      }
+
+      .h1-span {
+        font-size: 5.5vw;
+      }
       .webhero {
         margin-top: 0;
+      }
+      .heroimg {
+        margin-block-start: 3%;
+        width: 110%;
+      }
+
+      @media (min-width: 1400px) {
+        h1 {
+          font-size: 7vw;
+          line-height: 0.4;
+        }
+
+        .h1-span {
+          font-size: 5vw;
+        }
+        .heroimg {
+          width: 100%;
+          margin-block-start: 4%;
+        }
+      }
+    }
+
+    @media (min-width: 1700px) {
+      .heroimg {
+        width: 100%;
+        margin-block-start: 5%;
       }
     }
 
@@ -385,7 +406,7 @@ import Workflow from "../components/film-workflow.astro";
     .webtext {
       position: static;
       inset-block-end: 0;
-      font-size: 30px;
+      font-size: 18px;
       font-family: var(--gothic-wide);
       font-weight: var(--weight-semibold);
       line-height: 160%;
@@ -397,12 +418,16 @@ import Workflow from "../components/film-workflow.astro";
       max-width: 50ch;
     }
 
-    @media (max-width: 1025px) {
+    @media (min-width: 701px) {
       .webtext {
-        font-size: 18px;
+        font-size: 24px;
       }
     }
-
+    @media (min-width: 1026px) {
+      .webtext {
+        font-size: 28px;
+      }
+    }
     .websites {
       max-width: 1200px;
       margin-block-start: 80px;
@@ -420,7 +445,7 @@ import Workflow from "../components/film-workflow.astro";
       gap: 1rem;
       padding-bottom: 1rem;
       scroll-behavior: smooth;
-      scrollbar-width: thin;
+      scrollbar-width: none;
     }
 
     .video-wrapper {
@@ -449,12 +474,6 @@ import Workflow from "../components/film-workflow.astro";
       height: 100%;
       object-fit: cover;
       transition: opacity 200ms ease;
-    }
-
-    /* wird per JS gesetzt, sobald Video geladen ist */
-    .video-poster.is-hidden {
-      opacity: 0;
-      pointer-events: none;
     }
 
     .spacer {
@@ -527,7 +546,7 @@ import Workflow from "../components/film-workflow.astro";
 
     @media (min-width: 1000px) {
       button {
-        font-size: 2vw;
+        font-size: 1.6vw;
         padding: 30px 45px;
       }
     }

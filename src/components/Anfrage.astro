@@ -141,7 +141,7 @@ const success = Astro.url.searchParams.get("success");
     font-weight: var(--weight-bold);
     color: white;
     font-size: 9vw;
-    margin-top: 30%;
+    margin-top: 10%;
 
     line-height: 60%;
     text-align: center;
@@ -167,6 +167,15 @@ const success = Astro.url.searchParams.get("success");
     }
     .quatschen {
       font-size: 9vw;
+    }
+  }
+
+  @media (min-width: 1700px) {
+    h2 {
+      font-size: 5vw;
+    }
+    .quatschen {
+      font-size: 7vw;
     }
   }
   .form {
@@ -199,7 +208,7 @@ const success = Astro.url.searchParams.get("success");
     border: 0;
   }
   .field {
-    margin: 10px 0;
+    margin: 8px 0;
     display: grid;
     gap: 6px;
   }
@@ -237,7 +246,25 @@ const success = Astro.url.searchParams.get("success");
     justify-self: center;
   }
 
-  .budget {
+  @media (min-width: 701px) {
+    h3 {
+      font-size: 4vw;
+    }
+
+    .field {
+      margin: 2px;
+    }
+  }
+  @media (min-width: 1001px) {
+    h3 {
+      font-size: 7vw;
+      margin: 3%;
+    }
+  }
+  @media (min-width: 1401px) {
+    h3 {
+      font-size: 4vw;
+    }
   }
 
   .budgetoptions {
@@ -253,11 +280,22 @@ const success = Astro.url.searchParams.get("success");
     .budgetoptions {
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
+      gap: 1.5vw;
+    }
+  }
+  @media (min-width: 1001px) {
+    .budgetoptions {
+      gap: 1vw;
+    }
+  }
+  @media (min-width: 1401px) {
+    .budgetoptions {
+      gap: 0.5vw;
     }
   }
   .radio {
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px 30px;
     cursor: pointer;
     transition: all 0.15s ease;
     background: white;
@@ -267,6 +305,22 @@ const success = Astro.url.searchParams.get("success");
   span {
     font-family: var(--gothic-wide);
     font-weight: var(--weight-extrabold);
+    font-size: 4vw;
+  }
+  @media (min-width: 701px) {
+    span {
+      font-size: 3vw;
+    }
+  }
+  @media (min-width: 1001px) {
+    span {
+      font-size: 2vw;
+    }
+  }
+  @media (min-width: 1701px) {
+    span {
+      font-size: 1.5vw;
+    }
   }
 
   .radio:hover {
@@ -290,6 +344,13 @@ const success = Astro.url.searchParams.get("success");
     color: white;
     max-width: 70ch;
     margin-top: 5%;
+    text-align: center;
+  }
+  @media (min-width: 1401px) {
+    .info {
+      margin-top: 2%;
+      font-size: 0.8rem;
+    }
   }
 
   button {
@@ -331,7 +392,7 @@ const success = Astro.url.searchParams.get("success");
 
   @media (min-width: 1000px) {
     button {
-      font-size: 2vw;
+      font-size: 1.6vw;
       padding: 30px 45px;
     }
   }

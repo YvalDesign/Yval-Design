@@ -341,7 +341,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
   <style>
     h1 {
       color: var(--primary);
-      font-size: 6vw;
+      font-size: 12vw;
       font-weight: var(--weight-bold);
       font-family: var(--gothic-wide);
 
@@ -351,34 +351,17 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
 
     .h1-span {
       color: white;
-      font-size: 5vw;
+      font-size: 7vw;
       font-family: var(--spills);
       font-weight: var(--weight-normal);
     }
 
-    @media (max-width: 1025px) {
-      h1 {
-        font-size: 12vw;
-        line-height: 0.3;
-
-        .h1-span {
-          font-size: 7vw;
-        }
-      }
-    }
-
     .heroimg {
       display: block;
-      width: 130%;
+      width: 150%;
       height: auto;
       margin-top: 0px;
-      max-width: 1400px;
-    }
-
-    @media (max-width: 1025px) {
-      .heroimg {
-        width: 150%;
-      }
+      max-width: 1200px;
     }
 
     .webhero {
@@ -391,9 +374,43 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       overflow-x: hidden;
     }
 
-    @media (min-width: 1001px) {
+    @media (min-width: 1026px) {
+      h1 {
+        font-size: 9vw;
+        line-height: 0.4;
+      }
+
+      .h1-span {
+        font-size: 5.5vw;
+      }
       .webhero {
         margin-top: 0;
+      }
+      .heroimg {
+        margin-block-start: -2%;
+        width: 110%;
+      }
+
+      @media (min-width: 1400px) {
+        h1 {
+          font-size: 7vw;
+          line-height: 0.4;
+        }
+
+        .h1-span {
+          font-size: 5vw;
+        }
+        .heroimg {
+          width: 100%;
+          margin-block-start: -3%;
+        }
+      }
+    }
+
+    @media (min-width: 1700px) {
+      .heroimg {
+        width: 100%;
+        margin-block-start: 2%;
       }
     }
 
@@ -403,7 +420,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
 
     h2 {
       color: white;
-      font-size: 6vw;
+      font-size: 8vw;
       font-weight: var(--weight-bold);
       font-family: var(--gothic-wide);
       line-height: 1;
@@ -422,7 +439,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       top: 0.12em;
       margin-right: 1%;
 
-      font-size: 8vw;
+      font-size: 9vw;
       font-family: var(--spills);
       font-weight: var(--weight-normal);
       color: var(--primary);
@@ -439,7 +456,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
 
     @media (min-width: 1026px) {
       h2 {
-        font-size: 4.5vw;
+        font-size: 5.5vw;
         line-height: 0.8;
       }
       .zwischen {
@@ -447,27 +464,26 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       }
 
       .h2-span-2 {
-        font-size: 6.1vw;
+        font-size: 6.6vw;
       }
     }
-
-    @media (max-width: 1025px) {
+    @media (min-width: 1400px) {
       h2 {
-        font-size: 7.5vw;
-        line-height: 0.8;
+        font-size: 4.5vw;
       }
-    }
+      .zwischen {
+        font-size: 6vw;
+      }
 
-    @media (max-width: 1025px) {
       .h2-span-2 {
-        font-size: 11vw;
+        font-size: 5.4vw;
       }
     }
 
     .webtext {
       position: static;
       inset-block-end: 0;
-      font-size: 30px;
+      font-size: 18px;
       font-family: var(--gothic-wide);
       font-weight: var(--weight-semibold);
       line-height: 160%;
@@ -479,9 +495,14 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
       max-width: 50ch;
     }
 
-    @media (max-width: 1025px) {
+    @media (min-width: 701px) {
       .webtext {
-        font-size: 18px;
+        font-size: 24px;
+      }
+    }
+    @media (min-width: 1026px) {
+      .webtext {
+        font-size: 28px;
       }
     }
 
@@ -612,7 +633,7 @@ const Switchposter = new URL("../assets/posters/Switch.jpg", import.meta.url)
 
     @media (min-width: 1000px) {
       button {
-        font-size: 2vw;
+        font-size: 1.6vw;
         padding: 30px 45px;
       }
     }

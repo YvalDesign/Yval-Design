@@ -9,7 +9,7 @@ export default defineConfig({
     responsive: true,
   },
 
-  output: 'hybrid', 
+  output: 'server', 
 
   adapter: cloudflare(),
 });
