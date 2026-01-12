@@ -3,23 +3,70 @@ import burgerbg from "../assets/burgerbg.png";
 ---
 
 <header>
-  <nav class="nav">
-    <!-- Burger Button -->
-    <button id="burger" class="burger">
-      <span></span>
-      <span></span>
-    </button>
+  <div class="head">
+    <a class="anfrage-link" href="#Anfrage"
+      ><button class="anfrage">Jetzt Anfragen</button></a
+    >
+    <nav class="nav">
+      <!-- Burger Button -->
+      <button id="burger" class="burger">
+        <span></span>
+        <span></span>
+      </button>
 
-    <!-- Fullscreen Menü -->
-    <div id="menu" class="menu">
-      <a href="/">Home</a>
-      <a href="/webdesign">Website</a>
-      <a href="/socialmedia">Social Media</a>
-      <a href="/movies">Movies</a>
-    </div>
-  </nav>
+      <!-- Fullscreen Menü -->
+      <div id="menu" class="menu">
+        <a href="/">Home</a>
+        <a href="/webdesign">Website</a>
+        <a href="/socialmedia">Social Media</a>
+        <a href="/movies">Movies</a>
+      </div>
+    </nav>
+  </div>
 
   <style>
+    .head {
+      display: flex;
+      align-items: center;
+    }
+    .anfrage {
+      scroll-behavior: smooth;
+    }
+
+    .anfrage {
+      position: fixed;
+      z-index: 51;
+      top: 20px;
+      left: 25px;
+      border: 3px solid var(--primary);
+      background: transparent;
+      color: white;
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-bold);
+      font-size: 3.25vw;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    @media (min-width: 701px) {
+      .anfrage {
+        font-size: 2.2vw;
+        top: 25px;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .anfrage {
+        font-size: 1.2vw;
+        top: 30px;
+      }
+    }
+
+    .anfrage:hover {
+      background: var(--primary);
+      transition: all 300ms ease-in-out;
+    }
     /* Grundlayout */
     .nav {
       position: absolute;

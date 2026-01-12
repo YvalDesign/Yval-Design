@@ -14,6 +14,7 @@ import web4 from "../assets/crowd.png";
 import web5 from "../assets/gear.png";
 import web6 from "../assets/earth.png";
 import Workflow from "../components/sm-workflow.astro";
+import Anfrage from "../components/Anfrage.astro";
 ---
 
 <Layout title="Social Media">
@@ -59,42 +60,6 @@ import Workflow from "../components/sm-workflow.astro";
   </div>
 
   <div class="websites">
-    <h3>UNSERE FEEDS</h3>
-    <div class="ex">
-      <Image
-        src={DBP}
-        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
-        class="marseille"
-        loading="lazy"
-        quality="{80}"
-        decoding="async"
-        placeholder="blur"
-        format="avif"
-        widths={[800, 1600, 3000]}
-      />
-      <Image
-        src={Mivida}
-        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
-        class="marseille"
-        loading="lazy"
-        quality="{80}"
-        decoding="async"
-        placeholder="blur"
-        format="avif"
-        widths={[800, 1600, 3000]}
-      />
-      <Image
-        src={Neo}
-        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
-        class="marseille"
-        loading="lazy"
-        quality="{80}"
-        decoding="async"
-        placeholder="blur"
-        format="avif"
-        widths={[800, 1600, 3000]}
-      />
-    </div>
     <h3>UNSERE VIDEOS</h3>
     <div class="ex">
       <div class="video-wrapper">
@@ -150,6 +115,42 @@ import Workflow from "../components/sm-workflow.astro";
       </div>
 
       <div class="spacer"></div>
+    </div>
+    <h3>UNSERE FEEDS</h3>
+    <div class="ex">
+      <Image
+        src={DBP}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+      <Image
+        src={Mivida}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
+      <Image
+        src={Neo}
+        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+        class="marseille"
+        loading="lazy"
+        quality="{80}"
+        decoding="async"
+        placeholder="blur"
+        format="avif"
+        widths={[800, 1600, 3000]}
+      />
     </div>
   </div>
 
@@ -330,6 +331,8 @@ import Workflow from "../components/sm-workflow.astro";
   </div>
 
   <Workflow />
+
+  <Anfrage />
 
   <style>
     h1 {
@@ -517,7 +520,7 @@ import Workflow from "../components/sm-workflow.astro";
       gap: 1rem;
       padding-top: 0;
       scroll-behavior: smooth;
-      scrollbar-width: thin;
+      scrollbar-width: none;
     }
 
     h3 {

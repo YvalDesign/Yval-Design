@@ -188,6 +188,12 @@ import mivida from "../assets/mivida.png";
 
   .ex {
     display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-top: 0;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
     flex-direction: column;
     gap: 4vh;
   }

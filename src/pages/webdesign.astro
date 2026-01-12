@@ -9,6 +9,7 @@ import web3 from "../assets/city.png";
 import web4 from "../assets/menschen.png";
 import web5 from "../assets/hand.png";
 import Workflow from "../components/workflow-web.astro";
+import Anfrage from "../components/Anfrage.astro";
 ---
 
 <Layout title="Yval Design - Website">
@@ -54,28 +55,32 @@ import Workflow from "../components/workflow-web.astro";
   <div class="websites">
     <h3>UNSERE WEBSITES</h3>
     <div class="ex">
-      <Image
-        src={web1}
-        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
-        class="marseille"
-        loading="lazy"
-        quality="{80}"
-        decoding="async"
-        aria-placeholder="blur"
-        format="avif"
-        widths={[800, 1600, 3000]}
-      />
-      <Image
-        src={web2}
-        alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
-        class="marseille"
-        loading="lazy"
-        quality="{80}"
-        decoding="async"
-        aria-placeholder="blur"
-        format="avif"
-        widths={[800, 1600, 3000]}
-      />
+      <div class="wrapper">
+        <Image
+          src={web1}
+          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          class="marseille"
+          loading="lazy"
+          quality="{80}"
+          decoding="async"
+          aria-placeholder="blur"
+          format="avif"
+          widths={[800, 1600, 3000]}
+        />
+      </div>
+      <div class="wrapper">
+        <Image
+          src={web2}
+          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          class="marseille"
+          loading="lazy"
+          quality="{80}"
+          decoding="async"
+          aria-placeholder="blur"
+          format="avif"
+          widths={[800, 1600, 3000]}
+        />
+      </div>
     </div>
 
     <button>LÖSEN WIR DAS PROBLEM!</button>
@@ -219,6 +224,8 @@ import Workflow from "../components/workflow-web.astro";
   </div>
 
   <Workflow />
+
+  <Anfrage />
 
   <style>
     h1 {
@@ -428,10 +435,27 @@ import Workflow from "../components/workflow-web.astro";
       }
     }
 
+    .wrapper {
+      overflow: hidden;
+      border-radius: 30px;
+      display: block;
+      width: fit-content;
+      height: fit-content;
+    }
+
     .marseille {
       border-radius: 30px;
       width: 100%;
       height: auto;
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+      overflow: hidden;
+      object-fit: cover;
+    }
+
+    .marseille:hover {
+      transform: scale(1.05);
+      transition: all 300ms ease-in-out;
     }
 
     button {
