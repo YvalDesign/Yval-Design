@@ -3,70 +3,85 @@ import type { APIRoute } from "astro";
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
-  const data = await request.formData();
-  
-  // 1. HONEYPOT CHECK
-  const honeypot = data.get("company");
-  if (honeypot) {
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
-  }
-
-  const name = `${data.get("firstName")} ${data.get("lastName")}`;
-  const email = data.get("email")?.toString();
-  const message = data.get("message")?.toString();
-  const budget = data.get("budget")?.toString();
-  const phone = data.get("phone")?.toString();
-
-  // 2. API KEY HOLEN (Korrektur: process.env entfernt!)
-  // Auf Cloudflare muss die Variable via import.meta.env oder context kommen.
-  const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
-
-  if (!RESEND_API_KEY) {
-    console.error("CRITICAL: RESEND_API_KEY is missing in environment variables!");
-    return new Response(
-      JSON.stringify({ message: "Server Configuration Error" }),
-      { status: 500 }
-    );
-  }
-
-  // 3. SENDEN VIA RESEND
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
+    const data = await request.formData();
+
+    // 1. HONEYPOT
+    if (data.get("company")) {
+      return new Response(JSON.stringify({ success: true }), { status: 200 });
+    }
+
+    const name = `${data.get("firstName")} ${data.get("lastName")}`;
+    const email = data.get("email")?.toString();
+    const message = data.get("message")?.toString();
+    const budget = data.get("budget")?.toString();
+    const phone = data.get("phone")?.toString();
+
+    // 2. API KEY SUCHE (EXTREM ROBUST)
+    // Wir suchen den Key an allen möglichen Orten, wo Cloudflare ihn verstecken könnte.
+    let apiKey = import.meta.env.RESEND_API_KEY;
+
+    // Cloudflare Runtime Zugriff (der häufigste Weg für Dashboard-Variablen)
+    if (!apiKey && locals && 'runtime' in locals) {
+        // @ts-ignore
+        const env = locals.runtime.env;
+        if (env && env.RESEND_API_KEY) {
+            apiKey = env.RESEND_API_KEY;
+        }
+    }
+
+    // Wenn immer noch kein Key da ist: ABBRECHEN mit genauer Fehlermeldung
+    if (!apiKey) {
+      console.error("DEBUG: Key wurde nirgends gefunden.");
+      return new Response(
+        JSON.stringify({ 
+          message: "DEBUG ERROR: API Key nicht gefunden. Prüfe Cloudflare Dashboard Variable Namen." 
+        }),
+        { status: 500 }
+      );
+    }
+
+    // 3. SENDEN
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        from: "Yval Website <onboarding@resend.dev>", 
+        from: "Yval Website <onboarding@resend.dev>",
+        // WICHTIG: Solange Domain nicht verifiziert ist, MUSS hier deine Resend-Login-Mail stehen!
         to: ["info@yval-design.de"], 
         reply_to: email,
-        subject: `Anfrage: ${name} (${budget}€)`,
+        subject: `Anfrage: ${name}`,
         html: `
-          <h3>Neue Anfrage über Website</h3>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Telefon:</strong> ${phone}</p>
           <p><strong>Budget:</strong> ${budget}€</p>
-          <hr />
-          <p><strong>Nachricht:</strong></p>
-          <p>${message?.replace(/\n/g, "<br>")}</p>
+          <p><strong>Nachricht:</strong> ${message}</p>
         `,
       }),
     });
 
-    const json = await res.json();
+    const responseData = await res.json();
 
     if (!res.ok) {
-      console.error("Resend API Error:", JSON.stringify(json));
-      return new Response(JSON.stringify({ message: "Error sending email" }), { status: 500 });
+      return new Response(
+        JSON.stringify({ 
+          message: `Resend Error: ${responseData.message || JSON.stringify(responseData)}` 
+        }), 
+        { status: 500 }
+      );
     }
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
 
-  } catch (error) {
-    console.error("Fetch/Network Error:", error);
-    return new Response(JSON.stringify({ message: "Internal Server Error" }), { status: 500 });
+  } catch (e: any) {
+    // Fängt JEDEN Absturz ab und zeigt ihn dir an
+    return new Response(
+      JSON.stringify({ message: `CRITICAL CRASH: ${e.message || e.toString()}` }),
+      { status: 500 }
+    );
   }
 };
