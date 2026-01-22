@@ -6,9 +6,7 @@ export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
   
-  // 1. HONEYPOT CHECK (Spamschutz)
-  // Wenn das versteckte Feld "company" ausgefüllt ist, ist es ein Bot.
-  // Wir tun so, als ob alles geklappt hat, senden aber nichts.
+  // 1. HONEYPOT CHECK
   const honeypot = data.get("company");
   if (honeypot) {
     return new Response(JSON.stringify({ success: true }), { status: 200 });
@@ -20,12 +18,14 @@ export const POST: APIRoute = async ({ request }) => {
   const budget = data.get("budget")?.toString();
   const phone = data.get("phone")?.toString();
 
-  // 2. API KEY HOLEN
-  const RESEND_API_KEY = import.meta.env.RESEND_API_KEY || process.env.RESEND_API_KEY;
+  // 2. API KEY HOLEN (Korrektur: process.env entfernt!)
+  // Auf Cloudflare muss die Variable via import.meta.env oder context kommen.
+  const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
 
   if (!RESEND_API_KEY) {
+    console.error("CRITICAL: RESEND_API_KEY is missing in environment variables!");
     return new Response(
-      JSON.stringify({ message: "Server Error: Missing API Key" }),
+      JSON.stringify({ message: "Server Configuration Error" }),
       { status: 500 }
     );
   }
@@ -39,7 +39,6 @@ export const POST: APIRoute = async ({ request }) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        // WICHTIG: Nutze 'onboarding@resend.dev' solange deine Domain nicht verifiziert ist!
         from: "Yval Website <onboarding@resend.dev>", 
         to: ["info@yval-design.de"], 
         reply_to: email,
@@ -60,14 +59,14 @@ export const POST: APIRoute = async ({ request }) => {
     const json = await res.json();
 
     if (!res.ok) {
-      console.error("Resend Error:", json);
-      return new Response(JSON.stringify({ message: json.message }), { status: 500 });
+      console.error("Resend API Error:", JSON.stringify(json));
+      return new Response(JSON.stringify({ message: "Error sending email" }), { status: 500 });
     }
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
 
   } catch (error) {
-    console.error("Fetch Error:", error);
+    console.error("Fetch/Network Error:", error);
     return new Response(JSON.stringify({ message: "Internal Server Error" }), { status: 500 });
   }
 };
