@@ -50,7 +50,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        from: "Yval Website <onboarding@resend.dev>",
+        from: "Yval Website <info@yval-design.de>",
         // WICHTIG: Solange Domain nicht verifiziert ist, MUSS hier deine Resend-Login-Mail stehen!
         to: ["info@yval-design.de"], 
         reply_to: email,
