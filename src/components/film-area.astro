@@ -230,22 +230,6 @@ import Animiv from "../assets/Animiv.mp4";
     object-fit: cover;
   }
 
-  /* Poster-Bild liegt über dem Video */
-  .video-poster {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 200ms ease;
-  }
-
-  /* wird per JS gesetzt, sobald Video geladen ist */
-  .video-poster.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
   .spacer {
     flex: 0 0 auto;
     scroll-snap-align: center;

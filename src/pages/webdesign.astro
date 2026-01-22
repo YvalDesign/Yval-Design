@@ -409,7 +409,12 @@ import Anfrage from "../components/Anfrage.astro";
 
     .ex {
       display: flex;
-      flex-direction: column;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding-top: 0;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
       gap: 4vh;
     }
 
@@ -439,8 +444,11 @@ import Anfrage from "../components/Anfrage.astro";
       overflow: hidden;
       border-radius: 30px;
       display: block;
-      width: fit-content;
+      width: 95%;
+      max-width: 1200px;
       height: fit-content;
+      flex: 0 0 auto;
+      scroll-snap-align: center;
     }
 
     .marseille {
@@ -615,4 +623,102 @@ import Anfrage from "../components/Anfrage.astro";
       margin-block-start: 8%;
     }
   </style>
+
+  <script>
+    // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
+    const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
+
+    window.addEventListener(
+      "wheel",
+      function (e) {
+        if (hscrollContainers.length === 0) return;
+
+        const viewportHeight = window.innerHeight;
+        const viewportCenter = viewportHeight / 2;
+
+        // 1. Finde den .ex-Container, der am nächsten zur Mitte des Viewports ist
+        let activeContainer = null;
+        let minDistance = Infinity;
+
+        for (const el of hscrollContainers) {
+          const rect = el.getBoundingClientRect();
+          // nur Container berücksichtigen, die überhaupt im Viewport sind
+          if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
+
+          const elementCenter = rect.top + rect.height / 2;
+          const distanceToCenter = Math.abs(viewportCenter - elementCenter);
+
+          if (distanceToCenter < minDistance) {
+            minDistance = distanceToCenter;
+            activeContainer = el;
+          }
+        }
+
+        const CENTER_THRESHOLD = 140; // anpassen: kleiner = strenger, größer = großzügiger
+        if (!activeContainer || minDistance > CENTER_THRESHOLD) {
+          return;
+        }
+
+        const container = activeContainer;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (maxScroll <= 0) return;
+
+        const currentScroll = container.scrollLeft;
+
+        const EPS = 1;
+        const atStart = currentScroll <= EPS;
+        const atEnd = currentScroll >= maxScroll - EPS;
+
+        const scrollingDown = e.deltaY > 0;
+        const scrollingUp = e.deltaY < 0;
+
+        // Wenn wir am linken/rechten Rand sind und in die "falsche" Richtung scrollen → normal vertikal scrollen
+        if ((atEnd && scrollingDown) || (atStart && scrollingUp)) {
+          return;
+        }
+
+        // Während eine Animation läuft, keine neuen Schritte zulassen,
+        // aber vertikales Scrollen blockieren, damit du nicht "rausfällst"
+        if (container.__isAnimating) {
+          e.preventDefault();
+          return;
+        }
+
+        e.preventDefault();
+
+        const direction = scrollingDown ? 1 : -1;
+
+        // Schrittweite: Breite des ersten Kindes (Bild/Video) + geschätzter Gap
+        const firstItem = container.firstElementChild;
+        let itemWidth;
+
+        if (firstItem) {
+          const itemRect = firstItem.getBoundingClientRect();
+          itemWidth = itemRect.width;
+        } else {
+          itemWidth = container.clientWidth * 0.8;
+        }
+
+        const GAP_ESTIMATE = 16; // px, kannst du an deinen gap anpassen
+        const STEP = itemWidth + GAP_ESTIMATE;
+
+        let target = currentScroll + direction * STEP;
+        target = Math.max(0, Math.min(maxScroll, target));
+
+        container.__isAnimating = true;
+
+        container.scrollTo({
+          left: target,
+          behavior: "smooth",
+        });
+
+        // Cooldown: eine Geste = ein Schritt
+        const ANIMATION_DURATION = 400; // ms
+        setTimeout(() => {
+          container.__isAnimating = false;
+        }, ANIMATION_DURATION);
+      },
+      { passive: false },
+    );
+  </script>
 </Layout>
