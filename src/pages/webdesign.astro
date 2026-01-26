@@ -398,45 +398,55 @@ import Anfrage from "../components/Anfrage.astro";
     }
 
     .websites {
-      max-width: 1200px;
+      width: 100%;
       margin-inline: auto;
       display: flex;
       flex-direction: column;
       align-items: center; /* Bild mittig */
       justify-content: center;
-      padding-inline: 1rem;
     }
 
     .ex {
       display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 1rem;
-      padding-top: 0;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      gap: 4vh;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center; /* Bild mittig */
+      justify-content: center;
+      padding-inline: 2%;
+    }
+
+    @media (min-width: 1001px) {
+      .ex {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        padding-top: 0;
+        padding-inline: 2%;
+      }
     }
 
     h3 {
       color: white;
       font-family: var(--gothic-xwide);
       font-weight: 600;
-      font-size: 5.5vw;
+      font-size: 1.7rem;
       align-self: flex-start;
+      padding-inline-start: 2%;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
     }
 
     @media (min-width: 769px) {
       h3 {
-        font-size: 2rem;
+        font-size: 3.5rem;
       }
     }
 
     @media (min-width: 1200px) {
       h3 {
-        font-size: 3rem;
         margin-top: 4rem;
         margin-bottom: 2rem;
+        font-size: 5rem;
       }
     }
 
@@ -444,8 +454,7 @@ import Anfrage from "../components/Anfrage.astro";
       overflow: hidden;
       border-radius: 30px;
       display: block;
-      width: 95%;
-      max-width: 1200px;
+      width: 100%;
       height: fit-content;
       flex: 0 0 auto;
       scroll-snap-align: center;

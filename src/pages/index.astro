@@ -40,281 +40,284 @@ import Anfrage from "../components/Anfrage.astro";
         verbrennt, sondern in die richtige Richtung investiert.
       </p>
     </p>
+  </section>
 
-    <h2 class="webheadline">
-      KOSTENLOSES <br />
-      <span class="h2-span">Analyse Gespräch</span>
-    </h2>
+  <h2 class="webheadline">
+    KOSTENLOSES <br />
+    <span class="h2-span">Analyse Gespräch</span>
+  </h2>
 
-    <p class="greet-sub">
-      Bevor wir zusammen loslegen, klären wir in einem kostenlosen
-      Analyse-Gespräch, was eure Probleme sind und wie wir sie am besten lösen
-      können!
-    </p>
-
+  <p class="greet-sub">
+    Bevor wir zusammen loslegen, klären wir in einem kostenlosen
+    Analyse-Gespräch, was eure Probleme sind und wie wir sie am besten lösen
+    können!
+  </p>
+  <a class="btn" href="/#Anfrage">
     <button>KOSTENLOSES GESPRÄCH!</button>
+  </a>
 
-    <Stratarea />
+  <Stratarea />
 
-    <Webarea />
+  <Webarea />
 
-    <Smarea />
+  <Smarea />
 
-    <Filmarea />
+  <Filmarea />
 
-    <Anfrage />
+  <Anfrage />
 
-    <style>
+  <style>
+    .hero {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    .heroimg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gradient {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(
+        to top,
+        var(--bg) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    /* Mobile (3:4) */
+    @media (max-width: 768px) {
       .hero {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-height: 100vh;
-        overflow: hidden;
+        aspect-ratio: 3 / 5;
       }
 
       .heroimg {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        object-position: 44% center;
       }
+    }
 
-      .gradient {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 30%;
-        background: linear-gradient(
-          to top,
-          var(--bg) 0%,
-          rgba(255, 255, 255, 0) 100%
-        );
+    /* Laptops (16:9) */
+    @media (min-width: 769px) {
+      .hero {
+        height: 100vh;
+        width: auto;
       }
+    }
+    h1 {
+      font-family: var(--gothic-wide);
+      font-weight: 900;
+      font-size: 7vw;
+      color: white;
+      text-shadow: 0px 6px 13px rgba(0, 0, 0, 0.7);
 
-      /* Mobile (3:4) */
-      @media (max-width: 768px) {
-        .hero {
-          aspect-ratio: 3 / 5;
-        }
+      text-align: center;
+      line-height: 0.85;
+      position: absolute;
+      top: 11%;
+    }
 
-        .heroimg {
-          object-position: 44% center;
-        }
-      }
+    .tothe {
+      font-size: 12vw;
+    }
 
-      /* Laptops (16:9) */
-      @media (min-width: 769px) {
-        .hero {
-          height: 100vh;
-          width: auto;
-        }
-      }
+    .moon {
+      color: #5acfef;
+    }
+
+    @media (min-width: 1000px) {
       h1 {
-        font-family: var(--gothic-wide);
-        font-weight: 900;
-        font-size: 7vw;
-        color: white;
-        text-shadow: 0px 6px 13px rgba(0, 0, 0, 0.7);
-
-        text-align: center;
-        line-height: 0.85;
-        position: absolute;
-        top: 8%;
+        font-size: 4vw;
       }
 
       .tothe {
-        font-size: 12vw;
+        font-size: 7vw;
       }
+    }
+    .headline {
+      margin-block-start: 50px;
+    }
 
-      .moon {
-        color: #5acfef;
-      }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition:
+        opacity 0.9s ease-out,
+        transform 0.9s ease-out;
+      will-change: opacity, transform;
+    }
 
-      @media (min-width: 1000px) {
-        h1 {
-          font-size: 4vw;
-        }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .tothe {
-          font-size: 7vw;
-        }
-      }
-      .headline {
-        margin-block-start: 50px;
-      }
+    h2 {
+      color: white;
+      font-weight: var(--weight-bold);
+      font-family: var(--gothic-wide);
+      font-size: 8.5vw;
+      line-height: 0.65;
 
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition:
-          opacity 0.9s ease-out,
-          transform 0.9s ease-out;
-        will-change: opacity, transform;
-      }
+      margin-block-start: 15%;
 
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      text-align: center;
+    }
 
+    .h2-span {
+      color: var(--primary);
+      font-family: var(--spills);
+      font-weight: var(--weight-normal);
+      font-size: 9vw;
+    }
+
+    .greet {
+      color: var(--primary);
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-extrabold);
+      font-size: 13vw;
+
+      text-align: center;
+      margin: auto;
+    }
+
+    .greet-sub {
+      color: var(--text);
+      font-family: var(--gothic-wide);
+      font-weight: var(--weight-semibold);
+      font-size: 1.3rem;
+      line-height: 1.5;
+      max-width: 40ch;
+
+      text-align: center;
+      margin-inline: auto;
+      margin-block-start: 0.5rem;
+      padding-inline: 4vw;
+    }
+
+    @media (min-width: 701px) {
       h2 {
-        color: white;
-        font-weight: var(--weight-bold);
-        font-family: var(--gothic-wide);
-        font-size: 8.5vw;
-        line-height: 0.65;
-
-        margin-block-start: 15%;
-
-        text-align: center;
+        font-size: 8vw;
+        margin-block-start: 10%;
       }
 
       .h2-span {
-        color: var(--primary);
-        font-family: var(--spills);
-        font-weight: var(--weight-normal);
-        font-size: 9vw;
+        font-size: 7.5vw;
       }
+    }
 
+    @media (min-width: 1200px) {
+      h2 {
+        font-size: 3.5vw;
+        margin-block-start: 5%;
+      }
+      .h2-span {
+        font-size: 4vw;
+      }
+    }
+
+    @media (min-width: 1000px) {
       .greet {
-        color: var(--primary);
-        font-family: var(--gothic-wide);
-        font-weight: var(--weight-extrabold);
-        font-size: 13vw;
-
-        text-align: center;
-        margin: auto;
+        font-size: 96px;
       }
 
       .greet-sub {
-        color: var(--text);
-        font-family: var(--gothic-wide);
-        font-weight: var(--weight-semibold);
-        font-size: 1.5rem;
-        line-height: 1.5;
-        max-width: 45ch;
-
-        text-align: center;
-        margin-inline: auto;
-        margin-block-start: 0.5rem;
-        padding-inline: 4vw;
+        font-size: 1.8rem;
       }
+    }
 
-      @media (min-width: 701px) {
-        h2 {
-          font-size: 8vw;
-          margin-block-start: 10%;
-        }
+    .Spills-Text {
+      font-family: var(--spills);
+      font-size: 2.6rem;
+      font-weight: var(--weight-normal);
+    }
 
-        .h2-span {
-          font-size: 7.5vw;
-        }
-      }
+    .prim {
+      color: var(--primary);
+    }
 
-      @media (min-width: 1200px) {
-        h2 {
-          font-size: 3.5vw;
-          margin-block-start: 5%;
-        }
-        .h2-span {
-          font-size: 4vw;
-        }
-      }
+    .btn {
+      text-decoration: none;
+    }
 
-      @media (min-width: 1000px) {
-        .greet {
-          font-size: 96px;
-        }
-
-        .greet-sub {
-          font-size: 33px;
-        }
-      }
-
-      .Spills-Text {
-        font-family: var(--spills);
-        font-size: 2.6rem;
-        font-weight: var(--weight-normal);
-      }
-
-      .prim {
-        color: var(--primary);
-      }
-
-      button {
-        background: linear-gradient(
-          to right,
-          var(--primary),
-          var(--secondary),
-          var(--primary)
-        );
-        border: none;
-        border-radius: 50px;
-        color: white;
-
-        font-family: var(--gothic-wide);
-        font-weight: 800;
-        display: block;
-        margin-inline: auto;
-
-        transform: scale(1);
-        transition: transform 150ms ease-in-out;
-        cursor: pointer;
-      }
-
-      @media (max-width: 700px) {
-        button {
-          font-size: 4vw;
-          padding: 20px 40px;
-          margin-top: 2rem;
-        }
-      }
-
-      @media (min-width: 701px) {
-        button {
-          font-size: 3vw;
-          padding: 25px 35px;
-          margin-top: 6rem;
-        }
-      }
-
-      @media (min-width: 1000px) {
-        button {
-          font-size: 1.6vw;
-          padding: 30px 45px;
-        }
-      }
-
-      button:hover {
-        transform: scale(1.05);
-        transition: all 150ms ease-in-out;
-      }
-
-      button:active {
-        transform: scale(0.97);
-      }
-    </style>
-
-    <script>
-      const observer = new IntersectionObserver(
-        (entries, obs) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              obs.unobserve(entry.target); // Beobachtung beenden, damit Animation nur einmal läuft
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-        },
+    button {
+      background: linear-gradient(
+        to right,
+        var(--primary),
+        var(--secondary),
+        var(--primary)
       );
+      border: none;
+      border-radius: 50px;
+      color: white;
 
-      document
-        .querySelectorAll(".fade-in")
-        .forEach((el) => observer.observe(el));
-    </script>
-  </section>
+      font-family: var(--gothic-wide);
+      font-weight: 800;
+      display: block;
+      margin-inline: auto;
+
+      transform: scale(1);
+      transition: transform 150ms ease-in-out;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      button {
+        font-size: 4vw;
+        padding: 20px 40px;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (min-width: 701px) {
+      button {
+        font-size: 3vw;
+        padding: 25px 35px;
+        margin-top: 6rem;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      button {
+        font-size: 1.6vw;
+        padding: 30px 45px;
+      }
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      transition: all 150ms ease-in-out;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+  </style>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target); // Beobachtung beenden, damit Animation nur einmal läuft
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+  </script>
 </Layout>

@@ -3,8 +3,10 @@ import Layout from "../layouts/main.astro";
 import { Image } from "astro:assets";
 import cam from "../assets/kamera.png";
 import Mivim from "../assets/Imagefilm.mp4";
+import mivmini from "../assets/imagemini.mp4";
 import Eule from "../assets/Eule.mp4";
-import Animiv from "../assets/Animiv.mp4";
+import moon from "../assets/moonani.mp4";
+import sony from "../assets/sony.mov";
 import web3 from "../assets/dna.png";
 import web4 from "../assets/crowd.png";
 import web5 from "../assets/gear.png";
@@ -46,49 +48,42 @@ import Anfrage from "../components/Anfrage.astro";
   <div class="websites">
     <h3>UNSERE IMAGEFILME</h3>
     <div class="ex">
-      <div class="video-wrapper">
-        <video
-          controls
-          muted
-          preload="auto"
-          playsinline
-          class="videoex"
-          src={Mivim}
-        >
-          Dein Browser unterstützt dieses Videoformat nicht.
-        </video>
-      </div>
+      <video
+        controls
+        muted
+        preload="auto"
+        playsinline
+        class="videoex"
+        src={Mivim}
+      >
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
+      <video
+        controls
+        muted
+        preload="auto"
+        playsinline
+        class="videoex"
+        src={mivmini}
+      >
+        Dein Browser unterstützt dieses Videoformat nicht.
+      </video>
     </div>
-    <h3>UNSERE ANIMATIONEN</h3>
-    <div class="ex">
-      <div class="video-wrapper">
-        <video
-          controls
-          muted
-          preload="auto"
-          playsinline
-          class="videoex"
-          src={Eule}
-        >
-          Dein Browser unterstützt dieses Videoformat nicht.
-        </video>
-      </div>
+  </div>
+  <h3>UNSERE ANIMATIONEN</h3>
+  <div class="ex">
+    <video controls muted preload="auto" playsinline class="videoex" src={moon}>
+      Dein Browser unterstützt dieses Videoformat nicht.
+    </video>
+    <video controls muted preload="auto" playsinline class="videoex" src={Eule}>
+      Dein Browser unterstützt dieses Videoformat nicht.
+    </video>
 
-      <div class="video-wrapper">
-        <video
-          controls
-          muted
-          preload="auto"
-          playsinline
-          class="videoex"
-          src={Animiv}
-        >
-          Dein Browser unterstützt dieses Videoformat nicht.
-        </video>
-      </div>
+    <video controls muted preload="auto" playsinline class="videoex" src={sony}>
+      Dein Browser unterstützt dieses Videoformat nicht.
+    </video>
 
-      <div class="spacer"></div>
-    </div>
+    <div class="spacer"></div>
   </div>
   <button>LEGEN WIR LOS!</button>
 
@@ -288,17 +283,16 @@ import Anfrage from "../components/Anfrage.astro";
       font-weight: var(--weight-normal);
     }
 
-      .h1-span {
-        font-size: 7vw;
-      }
-    
+    .h1-span {
+      font-size: 7vw;
+    }
 
     .heroimg {
       display: block;
       width: 130%;
       height: auto;
       max-width: 1200px;
-      margin left: 3%;
+      margin-left: 3%;
       margin-block-start: 10%;
     }
 
@@ -432,51 +426,53 @@ import Anfrage from "../components/Anfrage.astro";
       }
     }
     .websites {
-      max-width: 1200px;
-      margin-block-start: 80px;
+      width: 100%;
+      margin-block-start: 20px;
       margin-inline: auto;
       display: flex;
       flex-direction: column;
       align-items: center; /* Bild mittig */
       justify-content: center;
-      padding-inline: 1rem;
     }
     .ex {
       display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 1rem;
-      padding-bottom: 1rem;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-    }
+      flex-direction: column;
 
-    .video-wrapper {
-      position: relative;
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-      border-radius: 20px;
-      overflow: hidden;
-      width: 95%;
-      aspect-ratio: 16 / 9; /* ggf. auf 9/16 stellen, wenn die Videos hochkant sind */
-      background-color: #000;
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+
+      padding-inline: 3%;
     }
 
     .videoex {
+      border-radius: 20px;
+      overflow: hidden;
       width: 100%;
-      height: 100%;
-      display: block;
+
       object-fit: cover;
     }
 
-    /* Poster-Bild liegt über dem Video */
-    .video-poster {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity 200ms ease;
+    @media (min-width: 801px) {
+      .websites {
+        margin-block-start: 80px;
+      }
+      .ex {
+        overflow-x: auto;
+        flex-direction: row;
+
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        box-sizing: border-box;
+        overflow-y: visible;
+      }
+
+      .videoex {
+        max-width: 50%;
+        position: relative;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+      }
     }
 
     .spacer {
@@ -490,19 +486,21 @@ import Anfrage from "../components/Anfrage.astro";
       color: white;
       font-family: var(--gothic-xwide);
       font-weight: 600;
-      font-size: 5.5vw;
+      font-size: 1.4rem;
       align-self: flex-start;
-      margin-top: 3rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-inline-start: 3%;
     }
 
     @media (min-width: 701px) {
       h3 {
-        font-size: 2rem;
+        font-size: 3.5rem;
       }
     }
     @media (min-width: 1200px) {
       h3 {
-        font-size: 3rem;
+        font-size: 5rem;
         margin-top: 4rem;
         margin-bottom: 2rem;
       }
