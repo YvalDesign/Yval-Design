@@ -22,7 +22,17 @@ import Anfrage from "../components/Anfrage.astro";
       <span class="h1-span"> Machen wir dich Sichtbar!</span>
     </h1>
 
-    <Image src={cam} alt="Hero Bild" class="heroimg" />
+    <Image
+      src={cam}
+      alt="Schwebende Filmkamera umgeben von Videoediting Logos"
+      class="heroimg"
+      loading="eager"
+      fetchpriority="high"
+      quality={80}
+      decoding="async"
+      format="avif"
+      width={1200}
+    />
   </div>
 
   <div class="section-deinewebseite">
@@ -94,14 +104,13 @@ import Anfrage from "../components/Anfrage.astro";
       <section class="benefit-card">
         <Image
           src={web3}
-          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          alt="Grafik Markenidentität"
           class="card-bg"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
 
         <div class="card-content">
@@ -139,11 +148,10 @@ import Anfrage from "../components/Anfrage.astro";
           alt="Viele Menschen, die die Hände heben"
           class="card-bg"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
 
         <div class="card-content">
@@ -181,14 +189,13 @@ import Anfrage from "../components/Anfrage.astro";
       <section class="benefit-card">
         <Image
           src={web5}
-          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          alt="Grafik Gamechanger"
           class="card-bg"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
 
         <div class="card-content">
@@ -221,16 +228,14 @@ import Anfrage from "../components/Anfrage.astro";
       <section class="benefit-card">
         <Image
           src={web6}
-          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          alt="Grafik Wettbewerbsvorteil"
           class="card-bg"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
-
         <div class="card-content">
           <div class="card-icon">
             <svg

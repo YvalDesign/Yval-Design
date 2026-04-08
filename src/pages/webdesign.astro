@@ -19,7 +19,17 @@ import Anfrage from "../components/Anfrage.astro";
       <span class="h1-span"> Machen wir dich Sichtbar!</span>
     </h1>
 
-    <Image src={web} alt="Hero Bild" class="heroimg" placeholder="blurred" />
+    <Image
+      src={web}
+      alt="Website auf einem Laptop"
+      class="heroimg"
+      loading="eager"
+      fetchpriority="high"
+      quality={80}
+      decoding="async"
+      format="avif"
+      width={1600}
+    />
   </div>
 
   <div class="section-deinewebseite">
@@ -58,27 +68,25 @@ import Anfrage from "../components/Anfrage.astro";
       <div class="wrapper">
         <Image
           src={web1}
-          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          alt="Screenshot Website 1"
           class="marseille"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
       </div>
       <div class="wrapper">
         <Image
           src={web2}
-          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          alt="Screenshot Website 2"
           class="marseille"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
       </div>
     </div>
@@ -93,14 +101,13 @@ import Anfrage from "../components/Anfrage.astro";
       <section class="benefit-card">
         <Image
           src={web3}
-          alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
+          alt="Screenshot Website 3"
           class="card-bg"
           loading="lazy"
-          quality="{80}"
+          quality={80}
           decoding="async"
-          aria-placeholder="blur"
           format="avif"
-          widths={[800, 1600, 3000]}
+          width={1200}
         />
 
         <div class="card-content">
