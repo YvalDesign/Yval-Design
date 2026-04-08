@@ -44,30 +44,34 @@ import Anfrage from "../components/Anfrage.astro";
     </p>
   </section>
 
-  <h2 class="webheadline">
+  <h2 class="webheadline from-bottom">
     KOSTENLOSES <br />
     <span class="h2-span">Analyse Gespräch</span>
   </h2>
 
-  <p class="greet-sub">
+  <p class="greet-sub from-bottom delay-2">
     In einem kostenlosen Analysegespräch klären wir, wo ihr gerade steht und ob
     die Grundlage für Umsetzung bereits da ist.
   </p>
-  <a class="btn" href="/#Anfrage">
+  <a class="btn from-bottom delay-3" href="/#Anfrage">
     <button>KOSTENLOSES GESPRÄCH!</button>
   </a>
 
-  <Stratarea />
+  <div class="from-left"><Stratarea /></div>
 
-  <Webarea />
+  <div class="from-right"><Webarea /></div>
 
-  <Smarea />
+  <div class="from-left"><Smarea /></div>
 
-  <Filmarea />
+  <div class="from-right"><Filmarea /></div>
 
-  <Anfrage />
+  <div class="zoom-in"><Anfrage /></div>
 
   <style>
+    :global(body) {
+      overflow-x: hidden;
+    }
+
     .hero {
       position: relative;
       display: flex;
@@ -114,6 +118,7 @@ import Anfrage from "../components/Anfrage.astro";
         width: auto;
       }
     }
+
     h1 {
       font-family: var(--gothic-wide);
       font-weight: 900;
@@ -144,23 +149,74 @@ import Anfrage from "../components/Anfrage.astro";
         font-size: 7vw;
       }
     }
+
     .headline {
       margin-block-start: 50px;
     }
 
+    /* ── Animations ── */
+
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(50px);
       transition:
-        opacity 0.9s ease-out,
-        transform 0.9s ease-out;
-      will-change: opacity, transform;
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+    .from-bottom {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.92);
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-bottom.visible,
+    .from-left.visible,
+    .from-right.visible,
+    .zoom-in.visible {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+
+    .delay-2 {
+      transition-delay: 0.15s;
+    }
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* ── Rest ── */
 
     h2 {
       color: white;
@@ -319,6 +375,10 @@ import Anfrage from "../components/Anfrage.astro";
       },
     );
 
-    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+    document
+      .querySelectorAll(
+        ".fade-in, .from-bottom, .from-left, .from-right, .zoom-in",
+      )
+      .forEach((el) => observer.observe(el));
   </script>
 </Layout>
