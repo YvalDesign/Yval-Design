@@ -1,5 +1,26 @@
 ---
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  pageType?: "website" | "article";
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = "Markenstrategie-Agentur aus Hildesheim. Wir helfen Unternehmen herauszufinden, welche Maßnahmen wirklich sinnvoll sind – bevor Geld in die falschen Dinge fließt.",
+  canonicalPath = "",
+  ogImage = "/og-image.jpg",
+  pageType = "website",
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = "https://yval-design.de";
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const ogImageUrl = `${siteUrl}${ogImage}`;
+
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -7,11 +28,77 @@ import Footer from "../components/Footer.astro";
 
 <html lang="de">
   <head>
+    <!-- Basics -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+
+    <!-- SEO -->
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph (LinkedIn, WhatsApp, etc.) – nur auf indexierbaren Seiten -->
+    {!noindex && (
+      <>
+        <meta property="og:type" content={pageType} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:locale" content="de_DE" />
+        <meta property="og:site_name" content="yval" />
+      </>
+    )}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://use.typekit.net/hwp1mtq.css" />
-    <meta name="robots" content="index, follow" />
+
+    <!-- Google Search Console -->
+    <meta
+      name="google-site-verification"
+      content="kat4eSl5FuUbEkSeLB2n7xUBkljrZLASNeUcdvo4WqY"
+    />
+
+    <!-- Schema Markup (AIO / GEO) – nur auf indexierbaren Seiten -->
+    {!noindex && (
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "yval",
+          "description": "Markenstrategie-Agentur aus Hildesheim. Wir helfen Unternehmen, die richtige Entscheidung zu treffen – nicht die teuerste. In einem kompakten Strategieprozess finden wir heraus, wo das eigentliche Problem liegt und welche Maßnahmen wirklich sinnvoll sind.",
+          "url": "https://yval-design.de",
+          "foundingDate": "2024",
+          "areaServed": [
+            { "@type": "City", "name": "Hildesheim" },
+            { "@type": "State", "name": "Niedersachsen" }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Hildesheim",
+            "addressRegion": "Niedersachsen",
+            "addressCountry": "DE"
+          },
+          "knowsAbout": [
+            "Markenstrategie",
+            "Brand Strategy",
+            "Rebranding",
+            "Markenpositionierung",
+            "Markenentwicklung",
+            "Strategieberatung",
+            "Designstrategie"
+          ],
+          "slogan": "Wir helfen euch, die richtige Entscheidung zu treffen. Nicht die teuerste.",
+          "sameAs": [
+            "https://www.tiktok.com/@yvaldesigns"
+          ]
+        })}
+      </script>
+    )}
   </head>
   <body class="bg-bg">
     <Header />
