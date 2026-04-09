@@ -1,7 +1,9 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import cloudflare from '@astrojs/cloudflare';
+import cloudflare from "@astrojs/cloudflare";
+
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +11,7 @@ export default defineConfig({
     responsive: true,
   },
 
-  output: 'server', 
-
+  output: "server",
   adapter: cloudflare(),
+  integrations: [sitemap()],
 });
