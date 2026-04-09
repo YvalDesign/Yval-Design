@@ -32,7 +32,7 @@ import Anfrage from "../components/Anfrage.astro";
     />
   </div>
 
-  <div class="section-deinewebseite">
+  <div class="section-deinewebseite fade-in">
     <h2>
       Deine <span class="h2-span-1">Website</span>, <br />
       <span class="h2-span-2">deine</span>
@@ -47,7 +47,7 @@ import Anfrage from "../components/Anfrage.astro";
     </p>
   </div>
 
-  <div class="section-frust">
+  <div class="section-frust from-bottom">
     <h2 class="h2-row">
       <span class="h2-span-1">Frustrierend</span>, <br />
       <span class="h2-span-2b">oder?</span>
@@ -62,7 +62,7 @@ import Anfrage from "../components/Anfrage.astro";
     </p>
   </div>
 
-  <div class="websites">
+  <div class="websites from-bottom">
     <h3>UNSERE WEBSITES</h3>
     <div class="ex">
       <div class="wrapper">
@@ -95,10 +95,10 @@ import Anfrage from "../components/Anfrage.astro";
   </div>
 
   <div class="benefits">
-    <h3>DEINE BENEFITS</h3>
+    <h3 class="from-bottom">DEINE BENEFITS</h3>
 
     <grid class="grid-benefits">
-      <section class="benefit-card">
+      <section class="benefit-card from-left">
         <Image
           src={web3}
           alt="Screenshot Website 3"
@@ -142,7 +142,7 @@ import Anfrage from "../components/Anfrage.astro";
         </div>
       </section>
 
-      <section class="benefit-card">
+      <section class="benefit-card from-right">
         <Image
           src={web4}
           alt="Viele Menschen, die die Hände heben"
@@ -187,7 +187,7 @@ import Anfrage from "../components/Anfrage.astro";
         </div>
       </section>
 
-      <section class="benefit-card">
+      <section class="benefit-card zoom-in">
         <Image
           src={web5}
           alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
@@ -230,11 +230,15 @@ import Anfrage from "../components/Anfrage.astro";
     </grid>
   </div>
 
-  <Workflow />
+  <div class="from-bottom"><Workflow /></div>
 
-  <Anfrage />
+  <div class="zoom-in"><Anfrage /></div>
 
   <style>
+    :global(body) {
+      overflow-x: hidden;
+    }
+
     h1 {
       color: var(--primary);
       font-size: 13vw;
@@ -266,8 +270,8 @@ import Anfrage from "../components/Anfrage.astro";
       position: relative;
 
       display: flex;
-      flex-direction: column; /* Headline oben, Bild unten */
-      align-items: center; /* Abstand proportional zur View Width */
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
     }
 
@@ -409,7 +413,7 @@ import Anfrage from "../components/Anfrage.astro";
       margin-inline: auto;
       display: flex;
       flex-direction: column;
-      align-items: center; /* Bild mittig */
+      align-items: center;
       justify-content: center;
     }
 
@@ -417,7 +421,7 @@ import Anfrage from "../components/Anfrage.astro";
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
-      align-items: center; /* Bild mittig */
+      align-items: center;
       justify-content: center;
       padding-inline: 2%;
     }
@@ -530,8 +534,8 @@ import Anfrage from "../components/Anfrage.astro";
     }
 
     .card-icon svg {
-      width: auto; /* Breite vom Icon ergibt sich aus Höhe */
-      height: 100%; /* füllt die Icon-Zone */
+      width: auto;
+      height: 100%;
     }
 
     .card-headline {
@@ -559,7 +563,7 @@ import Anfrage from "../components/Anfrage.astro";
     .benefit-card {
       position: relative;
       min-height: auto;
-    } /* Höhe der Kachel */
+    }
 
     .card-bg {
       position: absolute;
@@ -577,14 +581,6 @@ import Anfrage from "../components/Anfrage.astro";
       padding-block-start: 1vw;
       padding-block-end: 1.5vw;
       overflow: hidden;
-    } /* liegt über dem Bild */
-
-    .benefit-card {
-      position: relative;
-      min-height: auto;
-
-      /*overflow: hidden;
-      border-radius: 20px; */
     }
 
     .grid-benefits {
@@ -600,22 +596,19 @@ import Anfrage from "../components/Anfrage.astro";
       }
 
       .card-content {
-        padding: 1.25rem 1.25rem 1.75rem; /* mehr Luft innen */
+        padding: 1.25rem 1.25rem 1.75rem;
       }
 
-      /* Headline auf Handy größer, nicht mehr in vw */
       .card-headline {
         font-size: 1.4rem;
         line-height: 1.3;
       }
 
-      /* Fließtext größer */
       .card-sub {
         font-size: 0.95rem;
         line-height: 1.6;
       }
 
-      /* Icon-Zone auf Handy fix in px/rem, nicht vw */
       .card-icon {
         height: 3rem;
         display: flex;
@@ -633,16 +626,91 @@ import Anfrage from "../components/Anfrage.astro";
     }
 
     .benefits {
-      max-width: 1440px; /* Gesamtbreite des Bereichs */
-      margin-inline: auto; /* zentriert im Viewport */
+      max-width: 1440px;
+      margin-inline: auto;
       padding-inline: 1.5rem;
-
       margin-block-start: 8%;
+    }
+
+    /* ── Animations ── */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .from-bottom {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.92);
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-bottom.visible,
+    .from-left.visible,
+    .from-right.visible,
+    .zoom-in.visible {
+      opacity: 1;
+      transform: translate(0) scale(1);
     }
   </style>
 
   <script>
-    // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
+    // ── IntersectionObserver für Animationen ──
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      },
+    );
+
+    document
+      .querySelectorAll(
+        ".fade-in, .from-bottom, .from-left, .from-right, .zoom-in",
+      )
+      .forEach((el) => observer.observe(el));
+
+    // ── Horizontal-Scroll-Logik für alle .ex-Container ──
     const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
 
     window.addEventListener(
@@ -653,13 +721,11 @@ import Anfrage from "../components/Anfrage.astro";
         const viewportHeight = window.innerHeight;
         const viewportCenter = viewportHeight / 2;
 
-        // 1. Finde den .ex-Container, der am nächsten zur Mitte des Viewports ist
         let activeContainer = null;
         let minDistance = Infinity;
 
         for (const el of hscrollContainers) {
           const rect = el.getBoundingClientRect();
-          // nur Container berücksichtigen, die überhaupt im Viewport sind
           if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
 
           const elementCenter = rect.top + rect.height / 2;
@@ -671,7 +737,7 @@ import Anfrage from "../components/Anfrage.astro";
           }
         }
 
-        const CENTER_THRESHOLD = 140; // anpassen: kleiner = strenger, größer = großzügiger
+        const CENTER_THRESHOLD = 140;
         if (!activeContainer || minDistance > CENTER_THRESHOLD) {
           return;
         }
@@ -689,13 +755,10 @@ import Anfrage from "../components/Anfrage.astro";
         const scrollingDown = e.deltaY > 0;
         const scrollingUp = e.deltaY < 0;
 
-        // Wenn wir am linken/rechten Rand sind und in die "falsche" Richtung scrollen → normal vertikal scrollen
         if ((atEnd && scrollingDown) || (atStart && scrollingUp)) {
           return;
         }
 
-        // Während eine Animation läuft, keine neuen Schritte zulassen,
-        // aber vertikales Scrollen blockieren, damit du nicht "rausfällst"
         if (container.__isAnimating) {
           e.preventDefault();
           return;
@@ -705,7 +768,6 @@ import Anfrage from "../components/Anfrage.astro";
 
         const direction = scrollingDown ? 1 : -1;
 
-        // Schrittweite: Breite des ersten Kindes (Bild/Video) + geschätzter Gap
         const firstItem = container.firstElementChild;
         let itemWidth;
 
@@ -716,7 +778,7 @@ import Anfrage from "../components/Anfrage.astro";
           itemWidth = container.clientWidth * 0.8;
         }
 
-        const GAP_ESTIMATE = 16; // px, kannst du an deinen gap anpassen
+        const GAP_ESTIMATE = 16;
         const STEP = itemWidth + GAP_ESTIMATE;
 
         let target = currentScroll + direction * STEP;
@@ -729,8 +791,7 @@ import Anfrage from "../components/Anfrage.astro";
           behavior: "smooth",
         });
 
-        // Cooldown: eine Geste = ein Schritt
-        const ANIMATION_DURATION = 400; // ms
+        const ANIMATION_DURATION = 400;
         setTimeout(() => {
           container.__isAnimating = false;
         }, ANIMATION_DURATION);

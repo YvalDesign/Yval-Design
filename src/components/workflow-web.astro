@@ -16,7 +16,7 @@ import { Image } from "astro:assets";
 
   <div class="steps">
     <section class="erstgespräch">
-      <div class="text-block">
+      <div class="text-block wf-from-left">
         <h3>
           Erstgespräch <br />
           <span class="sub-h3"
@@ -58,11 +58,11 @@ import { Image } from "astro:assets";
         </div>
       </div>
 
-      <div class="number-1">1</div>
+      <div class="number-1 wf-number">1</div>
     </section>
 
     <section class="konzeption">
-      <div class="text-block order-1">
+      <div class="text-block order-1 wf-from-right">
         <h3>
           Konzeption <br />
           <span class="sub-h3"
@@ -104,11 +104,11 @@ import { Image } from "astro:assets";
         </div>
       </div>
 
-      <div class="number-1 order-2">2</div>
+      <div class="number-1 order-2 wf-number">2</div>
     </section>
 
     <section class="design">
-      <div class="text-block">
+      <div class="text-block wf-from-left">
         <h3>
           Designphase <br />
           <span class="sub-h3"
@@ -150,11 +150,11 @@ import { Image } from "astro:assets";
         </div>
       </div>
 
-      <div class="number-1">3</div>
+      <div class="number-1 wf-number">3</div>
     </section>
 
     <section class="konzeption">
-      <div class="text-block order-1">
+      <div class="text-block order-1 wf-from-right">
         <h3>
           <span class="launch"> Launch & Pflege <br /></span>
           <span class="sub-h3"
@@ -195,7 +195,7 @@ import { Image } from "astro:assets";
         </div>
       </div>
 
-      <div class="number-1 order-2">4</div>
+      <div class="number-1 order-2 wf-number">4</div>
     </section>
   </div>
 </section>
@@ -335,8 +335,8 @@ import { Image } from "astro:assets";
 
     .number-1 {
       order: -1;
-      font-size: 60vw; /* Optional: kleiner machen auf Mobile */
-      align-self: left; /* Zentrieren der Zahl */
+      font-size: 60vw;
+      align-self: left;
     }
 
     h3 {
@@ -408,4 +408,72 @@ import { Image } from "astro:assets";
       line-height: 1;
     }
   }
+
+  /* ── Animations ── */
+
+  @keyframes wf-wobble {
+    0% {
+      transform: scale(0.7) rotate(-6deg);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.08) rotate(3deg);
+      opacity: 1;
+    }
+    80% {
+      transform: scale(0.96) rotate(-1.5deg);
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+    }
+  }
+
+  .wf-number {
+    opacity: 0;
+  }
+
+  .wf-number.visible {
+    animation: wf-wobble 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .wf-from-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .wf-from-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .wf-from-left.visible,
+  .wf-from-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
 </style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  document
+    .querySelectorAll(".wf-number, .wf-from-left, .wf-from-right")
+    .forEach((el) => observer.observe(el));
+</script>
