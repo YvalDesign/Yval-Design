@@ -39,7 +39,7 @@ import Anfrage from "../components/Anfrage.astro";
     />
   </div>
 
-  <div class="section-deinewebseite">
+  <div class="section-deinewebseite fade-in">
     <h2>
       Wenn sie das <span class="h2-span-1">Produkt</span>, <br />
       nur <span class="h2-span-2">kennen </span> würden!
@@ -52,14 +52,14 @@ import Anfrage from "../components/Anfrage.astro";
       Wir setzen euch und euer Produkt so in Szene, wie ihr wirklich seid, damit
       andere euch genau so wahrnehmen, wie ihr euch selbst.
     </p>
-    <p class="webtext">
+    <p class="webtext from-bottom">
       Ob per Kamera oder Animation, wir wählen das Format, das zu euch passt.
       Denn nicht alles lässt sich auf dieselbe Art darstellen. Aber alles lässt
       sich erzählen!
     </p>
   </div>
 
-  <div class="websites">
+  <div class="websites from-bottom">
     <h3>UNSERE IMAGEFILME</h3>
     <div class="ex">
       <video
@@ -84,28 +84,28 @@ import Anfrage from "../components/Anfrage.astro";
       </video>
     </div>
   </div>
-  <h3>UNSERE ANIMATIONEN</h3>
-  <div class="ex">
+
+  <h3 class="from-bottom">UNSERE ANIMATIONEN</h3>
+  <div class="ex from-bottom delay-2">
     <video controls muted preload="auto" playsinline class="videoex" src={moon}>
       Dein Browser unterstützt dieses Videoformat nicht.
     </video>
     <video controls muted preload="auto" playsinline class="videoex" src={Eule}>
       Dein Browser unterstützt dieses Videoformat nicht.
     </video>
-
     <video controls muted preload="auto" playsinline class="videoex" src={sony}>
       Dein Browser unterstützt dieses Videoformat nicht.
     </video>
-
     <div class="spacer"></div>
   </div>
-  <button>LEGEN WIR LOS!</button>
+
+  <button class="from-bottom">LEGEN WIR LOS!</button>
 
   <div class="benefits">
-    <h3>DEINE BENEFITS</h3>
+    <h3 class="from-bottom">DEINE BENEFITS</h3>
 
     <grid class="grid-benefits">
-      <section class="benefit-card">
+      <section class="benefit-card from-left">
         <Image
           src={web3}
           alt="Grafik Markenidentität"
@@ -116,7 +116,6 @@ import Anfrage from "../components/Anfrage.astro";
           format="avif"
           width={1200}
         />
-
         <div class="card-content">
           <div class="card-icon">
             <svg
@@ -134,9 +133,7 @@ import Anfrage from "../components/Anfrage.astro";
                 fill="#EB9125"></path>
             </svg>
           </div>
-
           <h4 class="card-headline">Markenidentität und Vertrauen</h4>
-
           <p class="card-sub">
             Ein guter Imagefilm ist mehr als nur hübsche Bilder,<br />
             Er erzählt, was dich ausmacht: deine Vision, deine Werte, echt und emotional.
@@ -146,7 +143,7 @@ import Anfrage from "../components/Anfrage.astro";
         </div>
       </section>
 
-      <section class="benefit-card">
+      <section class="benefit-card from-right">
         <Image
           src={web4}
           alt="Viele Menschen, die die Hände heben"
@@ -157,7 +154,6 @@ import Anfrage from "../components/Anfrage.astro";
           format="avif"
           width={1200}
         />
-
         <div class="card-content">
           <div class="card-icon">
             <svg
@@ -175,12 +171,7 @@ import Anfrage from "../components/Anfrage.astro";
                 class="icon-monitor-eye"></path>
             </svg>
           </div>
-
-          <h4 class="card-headline">
-            Mehr Sichtbarkeit <br />
-            und Reichweite
-          </h4>
-
+          <h4 class="card-headline">Mehr Sichtbarkeit <br />und Reichweite</h4>
           <p class="card-sub">
             Ob auf deiner Website, auf Youtube oder im Kino...<br />
             auf Messen oder in Ads, ein starker Film funktioniert auf allen Kanälen.
@@ -190,7 +181,7 @@ import Anfrage from "../components/Anfrage.astro";
         </div>
       </section>
 
-      <section class="benefit-card">
+      <section class="benefit-card from-left">
         <Image
           src={web5}
           alt="Grafik Gamechanger"
@@ -201,7 +192,6 @@ import Anfrage from "../components/Anfrage.astro";
           format="avif"
           width={1200}
         />
-
         <div class="card-content">
           <div class="card-icon">
             <svg
@@ -219,9 +209,7 @@ import Anfrage from "../components/Anfrage.astro";
                 class="icon-monitor"></path>
             </svg>
           </div>
-
           <h4 class="card-headline">Gamechanger</h4>
-
           <p class="card-sub">
             Was dich von der Konkurrenz abhebt?<br />
             Ein Film, der nicht nur informiert, sondern berührt. Genau das macht
@@ -229,7 +217,8 @@ import Anfrage from "../components/Anfrage.astro";
           </p>
         </div>
       </section>
-      <section class="benefit-card">
+
+      <section class="benefit-card from-right">
         <Image
           src={web6}
           alt="Grafik Wettbewerbsvorteil"
@@ -257,9 +246,7 @@ import Anfrage from "../components/Anfrage.astro";
                 class="icon-monitor"></path>
             </svg>
           </div>
-
           <h4 class="card-headline">Effiziente Kommunikation</h4>
-
           <p class="card-sub">
             Das Produkt ist erklärungsbedürftig?<br />
             Perfekt! Wir machens visuell verständlich. Ein Film bringt deine Botschaft
@@ -270,17 +257,20 @@ import Anfrage from "../components/Anfrage.astro";
     </grid>
   </div>
 
-  <Workflow />
+  <div class="from-bottom"><Workflow /></div>
 
-  <Anfrage />
+  <div class="zoom-in"><Anfrage /></div>
 
   <style>
+    :global(body) {
+      overflow-x: hidden;
+    }
+
     h1 {
       color: var(--primary);
       font-size: 12vw;
       font-weight: var(--weight-bold);
       font-family: var(--gothic-wide);
-
       text-align: center;
       line-height: 0.5;
     }
@@ -308,10 +298,9 @@ import Anfrage from "../components/Anfrage.astro";
     .webhero {
       margin-top: 10%;
       position: relative;
-
       display: flex;
-      flex-direction: column; /* Headline oben, Bild unten */
-      align-items: center; /* Abstand proportional zur View Width */
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
     }
 
@@ -320,7 +309,6 @@ import Anfrage from "../components/Anfrage.astro";
         font-size: 9vw;
         line-height: 0.4;
       }
-
       .h1-span {
         font-size: 5.5vw;
       }
@@ -337,7 +325,6 @@ import Anfrage from "../components/Anfrage.astro";
           font-size: 7vw;
           line-height: 0.4;
         }
-
         .h1-span {
           font-size: 5vw;
         }
@@ -365,7 +352,6 @@ import Anfrage from "../components/Anfrage.astro";
       font-weight: var(--weight-bold);
       font-family: var(--gothic-wide);
       line-height: 1;
-
       margin-block-start: -0.5em;
       margin-block-end: 1.5em;
       text-align: center;
@@ -378,7 +364,6 @@ import Anfrage from "../components/Anfrage.astro";
     .h2-span-2 {
       position: relative;
       top: 0.12em;
-
       font-size: 8vw;
       font-family: var(--spills);
       font-weight: var(--weight-normal);
@@ -390,9 +375,6 @@ import Anfrage from "../components/Anfrage.astro";
         font-size: 7.5vw;
         line-height: 0.8;
       }
-    }
-
-    @media (max-width: 1025px) {
       .h2-span-2 {
         font-size: 11vw;
       }
@@ -403,7 +385,6 @@ import Anfrage from "../components/Anfrage.astro";
         font-size: 4.5vw;
         line-height: 0.8;
       }
-
       .h2-span-2 {
         font-size: 6.1vw;
       }
@@ -417,10 +398,8 @@ import Anfrage from "../components/Anfrage.astro";
       font-weight: var(--weight-semibold);
       line-height: 160%;
       color: white;
-
       text-align: center;
       margin-inline: auto;
-
       max-width: 50ch;
     }
 
@@ -434,22 +413,22 @@ import Anfrage from "../components/Anfrage.astro";
         font-size: 28px;
       }
     }
+
     .websites {
       width: 100%;
       margin-block-start: 20px;
       margin-inline: auto;
       display: flex;
       flex-direction: column;
-      align-items: center; /* Bild mittig */
+      align-items: center;
       justify-content: center;
     }
+
     .ex {
       display: flex;
       flex-direction: column;
-
       gap: 1.5rem;
       padding-bottom: 1rem;
-
       padding-inline: 3%;
     }
 
@@ -457,7 +436,6 @@ import Anfrage from "../components/Anfrage.astro";
       border-radius: 20px;
       overflow: hidden;
       width: 100%;
-
       object-fit: cover;
     }
 
@@ -468,14 +446,12 @@ import Anfrage from "../components/Anfrage.astro";
       .ex {
         overflow-x: auto;
         flex-direction: row;
-
         scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
         scrollbar-width: none;
         box-sizing: border-box;
         overflow-y: visible;
       }
-
       .videoex {
         max-width: 50%;
         position: relative;
@@ -527,12 +503,10 @@ import Anfrage from "../components/Anfrage.astro";
       border: none;
       border-radius: 50px;
       color: white;
-
       font-family: var(--gothic-wide);
       font-weight: 800;
       display: block;
       margin-inline: auto;
-
       transform: scale(1);
       transition: transform 150ms ease-in-out;
       cursor: pointer;
@@ -545,7 +519,6 @@ import Anfrage from "../components/Anfrage.astro";
         margin-top: 2rem;
       }
     }
-
     @media (min-width: 701px) {
       button {
         font-size: 3vw;
@@ -553,7 +526,6 @@ import Anfrage from "../components/Anfrage.astro";
         margin-top: 4rem;
       }
     }
-
     @media (min-width: 1000px) {
       button {
         font-size: 1.6vw;
@@ -565,7 +537,6 @@ import Anfrage from "../components/Anfrage.astro";
       transform: scale(1.05);
       transition: all 150ms ease-in-out;
     }
-
     button:active {
       transform: scale(0.97);
     }
@@ -575,10 +546,9 @@ import Anfrage from "../components/Anfrage.astro";
       display: flex;
       align-items: flex-end;
     }
-
     .card-icon svg {
-      width: auto; /* Breite vom Icon ergibt sich aus Höhe */
-      height: 100%; /* füllt die Icon-Zone */
+      width: auto;
+      height: 100%;
     }
 
     .card-headline {
@@ -586,7 +556,6 @@ import Anfrage from "../components/Anfrage.astro";
       margin-block-start: 0.5rem;
       font-family: var(--gothic-wide);
       font-weight: var(--weight-bold);
-
       color: var(--text);
       line-height: 130%;
       font-size: 2vw;
@@ -606,7 +575,7 @@ import Anfrage from "../components/Anfrage.astro";
     .benefit-card {
       position: relative;
       min-height: auto;
-    } /* Höhe der Kachel */
+    }
 
     .card-bg {
       position: absolute;
@@ -624,14 +593,6 @@ import Anfrage from "../components/Anfrage.astro";
       padding-block-start: 1vw;
       padding-block-end: 1.5vw;
       overflow: hidden;
-    } /* liegt über dem Bild */
-
-    .benefit-card {
-      position: relative;
-      min-height: auto;
-
-      /*overflow: hidden;
-      border-radius: 20px; */
     }
 
     .grid-benefits {
@@ -645,30 +606,22 @@ import Anfrage from "../components/Anfrage.astro";
         grid-template-columns: repeat(1, minmax(0, 1fr));
         gap: 1rem;
       }
-
       .card-content {
-        padding: 1.25rem 1.25rem 1.75rem; /* mehr Luft innen */
+        padding: 1.25rem 1.25rem 1.75rem;
       }
-
-      /* Headline auf Handy größer, nicht mehr in vw */
       .card-headline {
         font-size: 1.4rem;
         line-height: 1.3;
       }
-
-      /* Fließtext größer */
       .card-sub {
         font-size: 0.95rem;
         line-height: 1.6;
       }
-
-      /* Icon-Zone auf Handy fix in px/rem, nicht vw */
       .card-icon {
         height: 3rem;
         display: flex;
         align-items: flex-end;
       }
-
       .card-icon svg {
         height: 100%;
         width: auto;
@@ -676,27 +629,103 @@ import Anfrage from "../components/Anfrage.astro";
     }
 
     .benefits {
-      max-width: 1440px; /* Gesamtbreite des Bereichs */
-      margin-inline: auto; /* zentriert im Viewport */
+      max-width: 1440px;
+      margin-inline: auto;
       padding-inline: 1.5rem;
-
       margin-block-start: 8%;
     }
+
+    /* ── Animations ── */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .from-bottom {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.92);
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-bottom.visible,
+    .from-left.visible,
+    .from-right.visible,
+    .zoom-in.visible {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+
+    .delay-2 {
+      transition-delay: 0.15s;
+    }
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
   </style>
+
   <script>
-    // Alle Videos holen
+    // ── IntersectionObserver für Animationen ──
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    document
+      .querySelectorAll(
+        ".fade-in, .from-bottom, .from-left, .from-right, .zoom-in",
+      )
+      .forEach((el) => observer.observe(el));
+
+    // ── Autoplay Videos ──
     const videos = document.querySelectorAll("video");
 
-    const observer = new IntersectionObserver(
+    const videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-
-          // Änderung 1: Wir prüfen isIntersecting (basiert auf dem threshold unten)
           if (entry.isIntersecting) {
             const playPromise = video.play();
-
-            // Änderung 2: Sicherheitsabfrage für Mobile (Low Power Mode)
             if (playPromise !== undefined) {
               playPromise.catch((error) => {
                 console.log("Autoplay blockiert:", error);
@@ -707,33 +736,23 @@ import Anfrage from "../components/Anfrage.astro";
           }
         });
       },
-      {
-        root: null,
-        // Änderung 3: 0.5 statt 1.0 -> Video startet, wenn es zur HÄLFTE sichtbar ist
-        threshold: 0.5,
-      },
+      { root: null, threshold: 0.5 },
     );
 
-    videos.forEach((video) => observer.observe(video));
+    videos.forEach((video) => videoObserver.observe(video));
 
-    // 🔥 Poster-Overlay ausblenden, sobald das Video bereit ist
+    // ── Poster-Overlay ──
     const wrappers = document.querySelectorAll(".video-wrapper");
     wrappers.forEach((wrapper) => {
       const video = wrapper.querySelector("video");
       const posterImg = wrapper.querySelector(".video-poster");
       if (!video || !posterImg) return;
-
-      const hidePoster = () => {
-        posterImg.classList.add("is-hidden");
-      };
-
-      // Wenn genug Daten da sind, um zu starten
+      const hidePoster = () => posterImg.classList.add("is-hidden");
       video.addEventListener("loadeddata", hidePoster, { once: true });
-      // Fallback: spätestens beim Play ausblenden
       video.addEventListener("play", hidePoster, { once: true });
     });
 
-    // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
+    // ── Horizontal-Scroll-Logik ──
     const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
 
     window.addEventListener(
@@ -744,49 +763,36 @@ import Anfrage from "../components/Anfrage.astro";
         const viewportHeight = window.innerHeight;
         const viewportCenter = viewportHeight / 2;
 
-        // 1. Finde den .ex-Container, der am nächsten zur Mitte des Viewports ist
         let activeContainer = null;
         let minDistance = Infinity;
 
         for (const el of hscrollContainers) {
           const rect = el.getBoundingClientRect();
-          // nur Container berücksichtigen, die überhaupt im Viewport sind
           if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
-
           const elementCenter = rect.top + rect.height / 2;
           const distanceToCenter = Math.abs(viewportCenter - elementCenter);
-
           if (distanceToCenter < minDistance) {
             minDistance = distanceToCenter;
             activeContainer = el;
           }
         }
 
-        const CENTER_THRESHOLD = 140; // anpassen: kleiner = strenger, größer = großzügiger
-        if (!activeContainer || minDistance > CENTER_THRESHOLD) {
-          return;
-        }
+        const CENTER_THRESHOLD = 140;
+        if (!activeContainer || minDistance > CENTER_THRESHOLD) return;
 
         const container = activeContainer;
         const maxScroll = container.scrollWidth - container.clientWidth;
         if (maxScroll <= 0) return;
 
         const currentScroll = container.scrollLeft;
-
         const EPS = 1;
         const atStart = currentScroll <= EPS;
         const atEnd = currentScroll >= maxScroll - EPS;
-
         const scrollingDown = e.deltaY > 0;
         const scrollingUp = e.deltaY < 0;
 
-        // Wenn wir am linken/rechten Rand sind und in die "falsche" Richtung scrollen → normal vertikal scrollen
-        if ((atEnd && scrollingDown) || (atStart && scrollingUp)) {
-          return;
-        }
+        if ((atEnd && scrollingDown) || (atStart && scrollingUp)) return;
 
-        // Während eine Animation läuft, keine neuen Schritte zulassen,
-        // aber vertikales Scrollen blockieren, damit du nicht "rausfällst"
         if (container.__isAnimating) {
           e.preventDefault();
           return;
@@ -795,36 +801,25 @@ import Anfrage from "../components/Anfrage.astro";
         e.preventDefault();
 
         const direction = scrollingDown ? 1 : -1;
-
-        // Schrittweite: Breite des ersten Kindes (Bild/Video) + geschätzter Gap
         const firstItem = container.firstElementChild;
         let itemWidth;
-
         if (firstItem) {
-          const itemRect = firstItem.getBoundingClientRect();
-          itemWidth = itemRect.width;
+          itemWidth = firstItem.getBoundingClientRect().width;
         } else {
           itemWidth = container.clientWidth * 0.8;
         }
 
-        const GAP_ESTIMATE = 16; // px, kannst du an deinen gap anpassen
+        const GAP_ESTIMATE = 16;
         const STEP = itemWidth + GAP_ESTIMATE;
-
         let target = currentScroll + direction * STEP;
         target = Math.max(0, Math.min(maxScroll, target));
 
         container.__isAnimating = true;
+        container.scrollTo({ left: target, behavior: "smooth" });
 
-        container.scrollTo({
-          left: target,
-          behavior: "smooth",
-        });
-
-        // Cooldown: eine Geste = ein Schritt
-        const ANIMATION_DURATION = 400; // ms
         setTimeout(() => {
           container.__isAnimating = false;
-        }, ANIMATION_DURATION);
+        }, 400);
       },
       { passive: false },
     );

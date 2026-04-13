@@ -44,7 +44,7 @@ import Anfrage from "../components/Anfrage.astro";
     />
   </div>
 
-  <div class="section-deinewebseite">
+  <div class="section-deinewebseite fade-in">
     <h2>
       Warum es <span class="h2-span-1">bei dir</span>, <br />
       <span class="h2-span-2">nicht </span> klappt
@@ -55,28 +55,28 @@ import Anfrage from "../components/Anfrage.astro";
       Und irgendwo muss noch ein QR-Code hin! Wir wollen doch einfach nur unsere
       Produkte verkaufen!"
     </p>
-    <p class="webtext">
+    <p class="webtext from-bottom">
       Sowas hören wir ziemlich oft. Aber genau so funktioniert Social Media eben
       nicht. Die Nutzer scrollen nicht durch Instagram oder TikTok, um Werbung
       zu sehen, sondern wollen unterhalten werden, etwas lernen oder einfach nur
       abschalten. <br /> Wenn du ihnen stattdessen nur dein Produkt zeigst, swipen
       sie direkt weiter.
     </p>
-    <p class="zwischen">Deswegen</p>
-    <p class="webtext">
+    <p class="zwischen from-bottom delay-2">Deswegen</p>
+    <p class="webtext from-bottom delay-3">
       Erst wenn du echten Mehrwert lieferst, sei es durch Humor, Inspiration
       oder interessante Infos, entsteht Aufmerksamkeit. Dann folgen dir die
       Leute automatisch. Und weil sie dich kennen und deinen Content positiv mit
       dir verknüpfen, ist der Schritt zum Kunden nicht mehr weit!
     </p>
-    <p class="webtext">
+    <p class="webtext from-bottom">
       Social Media kostet Zeit, Nerven und läuft oft ins Leere. Genau deshalb
       übernehmen wir das für euch, von Content bis Kampagne, komplett aus einer
       Hand.
     </p>
   </div>
 
-  <div class="websites">
+  <div class="websites from-bottom">
     <h3>UNSERE VIDEOS</h3>
     <div class="ex">
       <div class="video-wrapper">
@@ -168,13 +168,13 @@ import Anfrage from "../components/Anfrage.astro";
     </div>
   </div>
 
-  <button>LASS UNS HELFEN!</button>
+  <button class="from-bottom">LASS UNS HELFEN!</button>
 
   <div class="benefits">
-    <h3>DEINE BENEFITS</h3>
+    <h3 class="from-bottom">DEINE BENEFITS</h3>
 
     <grid class="grid-benefits">
-      <section class="benefit-card">
+      <section class="benefit-card from-left">
         <Image
           src={neuekunden}
           alt="Grafik zu neuen Kunden"
@@ -215,7 +215,7 @@ import Anfrage from "../components/Anfrage.astro";
         </div>
       </section>
 
-      <section class="benefit-card">
+      <section class="benefit-card from-right">
         <Image
           src={organischercontent}
           alt="Viele Menschen, die die Hände heben"
@@ -257,7 +257,7 @@ import Anfrage from "../components/Anfrage.astro";
         </div>
       </section>
 
-      <section class="benefit-card">
+      <section class="benefit-card zoom-in">
         <Image
           src={spartzeit}
           alt="Offener Laptop mit einer offenen Website und einer Raketengrafik im Hintergrund"
@@ -300,11 +300,15 @@ import Anfrage from "../components/Anfrage.astro";
     </grid>
   </div>
 
-  <Workflow />
+  <div class="from-bottom"><Workflow /></div>
 
-  <Anfrage />
+  <div class="zoom-in"><Anfrage /></div>
 
   <style>
+    :global(body) {
+      overflow-x: hidden;
+    }
+
     h1 {
       color: var(--primary);
       font-size: 12vw;
@@ -335,8 +339,8 @@ import Anfrage from "../components/Anfrage.astro";
       position: relative;
 
       display: flex;
-      flex-direction: column; /* Headline oben, Bild unten */
-      align-items: center; /* Abstand proportional zur View Width */
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
     }
 
@@ -478,7 +482,7 @@ import Anfrage from "../components/Anfrage.astro";
       margin-inline: auto;
       display: flex;
       flex-direction: column;
-      align-items: center; /* Bild mittig */
+      align-items: center;
       justify-content: center;
     }
 
@@ -548,18 +552,15 @@ import Anfrage from "../components/Anfrage.astro";
       flex: 0 0 auto;
       scroll-snap-align: center;
       max-width: 65%;
-      aspect-ratio: 16 9; /* Seitenverhältnis fixiert */
-
-      /* 💥 NEUE KORREKTUR: Feste Höhe für mobile/kleine Bildschirme setzen, damit die Videos Dimensionen haben, auch wenn das Poster fehlt. */
+      aspect-ratio: 16 9;
       height: 50.5vh;
-
       border-radius: 8px;
       overflow: hidden;
     }
-    /* Falls du die 80vh-Logik behalten willst, eher hier: */
+
     @media (min-width: 701px) {
       .video-wrapper {
-        max-width: 80%; /* Vielleicht etwas breiter auf Desktop? */
+        max-width: 80%;
         height: 80vh;
       }
     }
@@ -637,8 +638,8 @@ import Anfrage from "../components/Anfrage.astro";
     }
 
     .card-icon svg {
-      width: auto; /* Breite vom Icon ergibt sich aus Höhe */
-      height: 100%; /* füllt die Icon-Zone */
+      width: auto;
+      height: 100%;
     }
 
     .card-headline {
@@ -666,7 +667,7 @@ import Anfrage from "../components/Anfrage.astro";
     .benefit-card {
       position: relative;
       min-height: auto;
-    } /* Höhe der Kachel */
+    }
 
     .card-bg {
       position: absolute;
@@ -684,14 +685,6 @@ import Anfrage from "../components/Anfrage.astro";
       padding-block-start: 1vw;
       padding-block-end: 1.5vw;
       overflow: hidden;
-    } /* liegt über dem Bild */
-
-    .benefit-card {
-      position: relative;
-      min-height: auto;
-
-      /*overflow: hidden;
-      border-radius: 20px; */
     }
 
     .grid-benefits {
@@ -711,22 +704,19 @@ import Anfrage from "../components/Anfrage.astro";
       }
 
       .card-content {
-        padding: 1.25rem 1.25rem 1.75rem; /* mehr Luft innen */
+        padding: 1.25rem 1.25rem 1.75rem;
       }
 
-      /* Headline auf Handy größer, nicht mehr in vw */
       .card-headline {
         font-size: 1.4rem;
         line-height: 1.3;
       }
 
-      /* Fließtext größer */
       .card-sub {
         font-size: 0.95rem;
         line-height: 1.6;
       }
 
-      /* Icon-Zone auf Handy fix in px/rem, nicht vw */
       .card-icon {
         height: 3rem;
         display: flex;
@@ -740,34 +730,107 @@ import Anfrage from "../components/Anfrage.astro";
     }
 
     .benefits {
-      max-width: 1440px; /* Gesamtbreite des Bereichs */
-      margin-inline: auto; /* zentriert im Viewport */
+      max-width: 1440px;
+      margin-inline: auto;
       padding-inline: 1.5rem;
-
       margin-block-start: 8%;
+    }
+
+    /* ── Animations ── */
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .from-bottom {
+      opacity: 0;
+      transform: translateY(50px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition:
+        opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.92);
+      transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .from-bottom.visible,
+    .from-left.visible,
+    .from-right.visible,
+    .zoom-in.visible {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+
+    .delay-2 {
+      transition-delay: 0.15s;
+    }
+    .delay-3 {
+      transition-delay: 0.3s;
     }
   </style>
 
   <script>
-    // Alle Videos holen
+    // ── IntersectionObserver für Animationen ──
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    document
+      .querySelectorAll(
+        ".fade-in, .from-bottom, .from-left, .from-right, .zoom-in",
+      )
+      .forEach((el) => observer.observe(el));
+
+    // ── Autoplay Videos ──
     const videos = document.querySelectorAll("video");
 
-    const observer = new IntersectionObserver(
+    const videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const video = entry.target;
-
-          // WICHTIG: Wir prüfen hier auf "isIntersecting" statt auf die genaue Ratio.
-          // Sobald der Threshold (unten definiert) überschritten ist, ist isIntersecting = true.
           if (entry.isIntersecting) {
-            // Wir fangen Fehler ab, falls das Handy im Stromsparmodus ist (da ist Autoplay verboten)
             const playPromise = video.play();
             if (playPromise !== undefined) {
               playPromise.catch((error) => {
-                console.log(
-                  "Autoplay blockiert (oft wegen Stromsparmodus):",
-                  error,
-                );
+                console.log("Autoplay blockiert:", error);
               });
             }
           } else {
@@ -775,18 +838,12 @@ import Anfrage from "../components/Anfrage.astro";
           }
         });
       },
-      {
-        root: null,
-        // HIER LAG DAS PROBLEM:
-        // Statt 1.0 (100%) nehmen wir 0.5. Das heißt:
-        // Sobald das Video zur HÄLFTE im Bild ist, fängt es an zu spielen.
-        threshold: 0.5,
-      },
+      { root: null, threshold: 0.5 },
     );
 
-    videos.forEach((video) => observer.observe(video));
+    videos.forEach((video) => videoObserver.observe(video));
 
-    // 🔁 Horizontal-Scroll-Logik für alle .ex-Container
+    // ── Horizontal-Scroll-Logik ──
     const hscrollContainers = Array.from(document.querySelectorAll(".ex"));
 
     window.addEventListener(
@@ -797,13 +854,11 @@ import Anfrage from "../components/Anfrage.astro";
         const viewportHeight = window.innerHeight;
         const viewportCenter = viewportHeight / 2;
 
-        // 1. Finde den .ex-Container, der am nächsten zur Mitte des Viewports ist
         let activeContainer = null;
         let minDistance = Infinity;
 
         for (const el of hscrollContainers) {
           const rect = el.getBoundingClientRect();
-          // nur Container berücksichtigen, die überhaupt im Viewport sind
           if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
 
           const elementCenter = rect.top + rect.height / 2;
@@ -815,31 +870,22 @@ import Anfrage from "../components/Anfrage.astro";
           }
         }
 
-        const CENTER_THRESHOLD = 140; // anpassen: kleiner = strenger, größer = großzügiger
-        if (!activeContainer || minDistance > CENTER_THRESHOLD) {
-          return;
-        }
+        const CENTER_THRESHOLD = 140;
+        if (!activeContainer || minDistance > CENTER_THRESHOLD) return;
 
         const container = activeContainer;
         const maxScroll = container.scrollWidth - container.clientWidth;
         if (maxScroll <= 0) return;
 
         const currentScroll = container.scrollLeft;
-
         const EPS = 1;
         const atStart = currentScroll <= EPS;
         const atEnd = currentScroll >= maxScroll - EPS;
-
         const scrollingDown = e.deltaY > 0;
         const scrollingUp = e.deltaY < 0;
 
-        // Wenn wir am linken/rechten Rand sind und in die "falsche" Richtung scrollen → normal vertikal scrollen
-        if ((atEnd && scrollingDown) || (atStart && scrollingUp)) {
-          return;
-        }
+        if ((atEnd && scrollingDown) || (atStart && scrollingUp)) return;
 
-        // Während eine Animation läuft, keine neuen Schritte zulassen,
-        // aber vertikales Scrollen blockieren, damit du nicht "rausfällst"
         if (container.__isAnimating) {
           e.preventDefault();
           return;
@@ -848,8 +894,6 @@ import Anfrage from "../components/Anfrage.astro";
         e.preventDefault();
 
         const direction = scrollingDown ? 1 : -1;
-
-        // Schrittweite: Breite des ersten Kindes (Bild/Video) + geschätzter Gap
         const firstItem = container.firstElementChild;
         let itemWidth;
 
@@ -860,21 +904,16 @@ import Anfrage from "../components/Anfrage.astro";
           itemWidth = container.clientWidth * 0.8;
         }
 
-        const GAP_ESTIMATE = 16; // px, kannst du an deinen gap anpassen
+        const GAP_ESTIMATE = 16;
         const STEP = itemWidth + GAP_ESTIMATE;
 
         let target = currentScroll + direction * STEP;
         target = Math.max(0, Math.min(maxScroll, target));
 
         container.__isAnimating = true;
+        container.scrollTo({ left: target, behavior: "smooth" });
 
-        container.scrollTo({
-          left: target,
-          behavior: "smooth",
-        });
-
-        // Cooldown: eine Geste = ein Schritt
-        const ANIMATION_DURATION = 400; // ms
+        const ANIMATION_DURATION = 400;
         setTimeout(() => {
           container.__isAnimating = false;
         }, ANIMATION_DURATION);
